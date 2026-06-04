@@ -1,161 +1,63 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  LayoutDashboard,
-  LogIn,
-  ChevronRight,
-  Sparkles,
-} from "lucide-react";
+import { LayoutDashboard, Sparkles, Globe } from "lucide-react";
 
 export default function PublicHeader({ user }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  const [lang, setLang] = useState("BN");
 
   const dashboardUrl = user?.role ? `/dashboard/${user.role}` : "/login";
 
-  const navLinks = [
-    { name: "Features", href: "#features" },
-    { name: "Pricing Plans", href: "#pricing" },
-    { name: "Why Us", href: "#why-choose-us" },
-  ];
-
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b ${
-        scrolled
-          ? "bg-white/80 backdrop-blur-lg border-slate-200/60 shadow-sm py-3"
-          : "md:bg-transparent border-transparent py-5"
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-md border-b border-slate-200/50 py-3 transition-all">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6">
+        <div className="flex items-center justify-between gap-1.5 sm:gap-4">
           <Link
             href="/"
-            className="flex items-center gap-2 group focus:outline-none"
+            className="flex items-center group focus:outline-none shrink-0"
           >
-            <span className="font-black text-2xl tracking-tight text-slate-900 transition-colors group-hover:text-emerald-900">
+            <span className="font-black text-lg sm:text-xl tracking-tight text-slate-900 transition-colors group-hover:text-emerald-950">
               EduFilos<span className="text-emerald-700 italic">.</span>
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-100">
-              ERP
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-emerald-800 transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-700 hover:after:w-full after:transition-all after:duration-300"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            <button
+              onClick={() => setLang(lang === "BN" ? "EN" : "BN")}
+              className="flex items-center justify-center gap-0.5 text-[11px] sm:text-xs font-bold text-slate-600 hover:text-emerald-800 bg-slate-100/90 border border-slate-200/40 px-2 py-1.5 rounded-xl transition-colors active:scale-95 select-none"
+            >
+              <Globe className="w-3 h-3 text-slate-400 shrink-0" />
+              <span className="w-6 sm:w-8 text-center block sm:hidden">
+                {lang}
+              </span>
+              <span className="hidden sm:block min-w-8 text-center">
+                {lang === "BN" ? "বাংলা" : "EN"}
+              </span>
+            </button>
             {user && user.role ? (
-              <Link href={dashboardUrl}>
-                <button className="h-10 px-5 text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-900 shadow-md shadow-emerald-800/10 active:scale-95 transition-all rounded-xl flex items-center gap-2">
-                  <LayoutDashboard className="w-4 h-4" />
-                  Dashboard
+              <Link href={dashboardUrl} className="shrink-0">
+                <button className="h-8.5 px-3 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 shadow-sm active:scale-95 transition-all rounded-xl flex items-center gap-1">
+                  <LayoutDashboard className="w-3.5 h-3.5" />
+                  <span>Dashboard</span>
                 </button>
               </Link>
             ) : (
-              <>
+              <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
                 <Link
                   href="/login"
-                  className="text-sm font-semibold text-slate-600 hover:text-emerald-800 transition-colors"
+                  className="hidden xs:inline-block text-xs font-bold text-slate-600 hover:text-emerald-800 transition-colors px-1 py-1"
                 >
                   Sign In
                 </Link>
-                <Link href="/register-madrasha">
-                  <button className="h-10 px-5 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 active:scale-95 transition-all rounded-xl flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                    Get Started
+
+                <Link href="/register-madrasha" className="shrink-0">
+                  <button className="h-8.5 px-2.5 sm:px-4 text-xs font-extrabold text-white bg-slate-900 hover:bg-slate-800 active:scale-95 transition-all rounded-xl flex items-center gap-1 shadow-md">
+                    <Sparkles className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0 hidden sm:block" />
+                    <span>Get Started</span>
                   </button>
                 </Link>
-              </>
-            )}
-          </div>
-
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 -mr-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 md:hidden transition-colors focus:outline-none"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`fixed inset-0 top-16.25 z-40 w-full bg-white border-t border-slate-100 p-6 md:hidden transition-all duration-300 ease-in-out ${
-          isOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-4 pointer-events-none"
-        }`}
-      >
-        <div className="flex flex-col h-full justify-between pb-8">
-          <div className="space-y-4">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-              Navigation
-            </p>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 text-slate-700 font-medium transition-colors"
-              >
-                {link.name}
-                <ChevronRight className="w-4 h-4 text-slate-400" />
-              </Link>
-            ))}
-          </div>
-
-          <div className="space-y-3 pt-6 border-t border-slate-100">
-            {user && user.role ? (
-              <Link href={dashboardUrl} className="block w-full">
-                <button className="w-full h-12 rounded-xl font-bold text-sm bg-emerald-800 text-white flex items-center justify-center gap-2">
-                  <LayoutDashboard className="w-4 h-4" />
-                  Go To Dashboard
-                </button>
-              </Link>
-            ) : (
-              <>
-                <Link href="/login" className="block w-full">
-                  <button className="w-full h-12 rounded-xl font-bold text-sm border-2 border-slate-100 text-slate-700 bg-white hover:bg-slate-50 transition-colors">
-                    Sign In to Account
-                  </button>
-                </Link>
-                <Link href="/register-madrasha" className="block w-full">
-                  <button className="w-full h-12 rounded-xl font-bold text-sm bg-slate-900 text-white hover:bg-slate-800 transition-colors">
-                    Register Institution
-                  </button>
-                </Link>
-              </>
+              </div>
             )}
           </div>
         </div>
