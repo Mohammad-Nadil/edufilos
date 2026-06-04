@@ -1,25 +1,22 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-
-// Lucide Icons Import
-import { 
-  Menu, 
-  X, 
-  LayoutDashboard, 
-  LogIn, 
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  Menu,
+  X,
+  LayoutDashboard,
+  LogIn,
   ChevronRight,
-  Sparkles
-} from 'lucide-react';
+  Sparkles,
+} from "lucide-react";
 
 export default function PublicHeader({ user }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Scroll logic for shifting background opacity safely
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -28,38 +25,34 @@ export default function PublicHeader({ user }) {
         setScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile drawer menu on path changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  // Dynamic dashboard route helper mapping based on user login role
-  const dashboardUrl = user?.role ? `/dashboard/${user.role}` : '/login';
+  const dashboardUrl = user?.role ? `/dashboard/${user.role}` : "/login";
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing Plans', href: '#pricing' },
-    { name: 'Why Us', href: '#why-choose-us' },
+    { name: "Features", href: "#features" },
+    { name: "Pricing Plans", href: "#pricing" },
+    { name: "Why Us", href: "#why-choose-us" },
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b ${
-        scrolled 
-          ? 'bg-white/80 backdrop-blur-lg border-slate-200/60 shadow-sm py-3' 
-          : 'bg-transparent border-transparent py-5'
+        scrolled
+          ? "bg-white/80 backdrop-blur-lg border-slate-200/60 shadow-sm py-3"
+          : "md:bg-transparent border-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          
-          {/* ================= BRAND LOGO ================= */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex items-center gap-2 group focus:outline-none"
           >
             <span className="font-black text-2xl tracking-tight text-slate-900 transition-colors group-hover:text-emerald-900">
@@ -70,20 +63,18 @@ export default function PublicHeader({ user }) {
             </span>
           </Link>
 
-          {/* ================= DESKTOP NAVIGATION ================= */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-emerald-800 transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-emerald-700 hover:after:w-full after:transition-all after:duration-300"
+                className="text-sm font-medium text-slate-600 hover:text-emerald-800 transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-700 hover:after:w-full after:transition-all after:duration-300"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
 
-          {/* ================= DESKTOP ACTION BUTTONS ================= */}
           <div className="hidden md:flex items-center gap-4">
             {user && user.role ? (
               <Link href={dashboardUrl}>
@@ -94,7 +85,10 @@ export default function PublicHeader({ user }) {
               </Link>
             ) : (
               <>
-                <Link href="/login" className="text-sm font-semibold text-slate-600 hover:text-emerald-800 transition-colors">
+                <Link
+                  href="/login"
+                  className="text-sm font-semibold text-slate-600 hover:text-emerald-800 transition-colors"
+                >
                   Sign In
                 </Link>
                 <Link href="/register-madrasha">
@@ -107,7 +101,6 @@ export default function PublicHeader({ user }) {
             )}
           </div>
 
-          {/* ================= MOBILE MENU TRIGGER ================= */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 -mr-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 md:hidden transition-colors focus:outline-none"
@@ -115,22 +108,21 @@ export default function PublicHeader({ user }) {
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
-
         </div>
       </div>
 
-      {/* ================= MOBILE DRAWER OVERLAY ================= */}
-      <div 
-        className={`fixed inset-0 top-[65px] z-40 w-full bg-white border-t border-slate-100 p-6 md:hidden transition-all duration-300 ease-in-out ${
-          isOpen 
-            ? 'opacity-100 translate-y-0 pointer-events-auto' 
-            : 'opacity-0 -translate-y-4 pointer-events-none'
+      <div
+        className={`fixed inset-0 top-16.25 z-40 w-full bg-white border-t border-slate-100 p-6 md:hidden transition-all duration-300 ease-in-out ${
+          isOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
         <div className="flex flex-col h-full justify-between pb-8">
-          {/* Navigation Links inside Mobile Drawer */}
           <div className="space-y-4">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Navigation</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+              Navigation
+            </p>
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -143,7 +135,6 @@ export default function PublicHeader({ user }) {
             ))}
           </div>
 
-          {/* Dynamic Mobile CTAs based on Auth Status */}
           <div className="space-y-3 pt-6 border-t border-slate-100">
             {user && user.role ? (
               <Link href={dashboardUrl} className="block w-full">

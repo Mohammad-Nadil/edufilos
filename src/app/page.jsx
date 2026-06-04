@@ -22,8 +22,10 @@ import {
   HelpCircle,
   CheckCircle2,
 } from "lucide-react";
+import Calligraphy from "@/components/ui/Caligraphy";
+import imgCalligraphy from "../../public/calligraphyBg.png";
 
-export default function HomeClient({ user, plans: serverPlans }) {
+export default function page({ user, plans: serverPlans }) {
   const language = "bn";
 
   const cards = [
@@ -52,8 +54,8 @@ export default function HomeClient({ user, plans: serverPlans }) {
       icon: BookOpenCheck,
       title: "Result Management",
       desc: "Generate result sheets, transcripts, and progress reports automatically.",
-      color: "text-(--primary)",
-      bg: "bg-(--primary)/10",
+      color: "text-primary",
+      bg: "bg-primary/10",
     },
     {
       icon: Globe,
@@ -148,7 +150,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
       <section className="relative pt-20 pb-32 overflow-hidden">
         <IslamicPattern variant="geometric" opacity={0.07} />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-(--primary)/10 text-(--primary) text-xs font-bold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <Zap className="w-3.5 h-3.5 fill-current" />
             <p>إدارة مدرستك بذكاء | Premium Ecosystem</p>
           </div>
@@ -157,11 +159,11 @@ export default function HomeClient({ user, plans: serverPlans }) {
             {language === "bn" ? (
               <>
                 আধুনিক মাদরাসার জন্য{" "}
-                <span className="text-(--primary) italic">EduFilos</span> ERP
+                <span className="text-primary italic">EduFilos</span> ERP
               </>
             ) : (
               <>
-                Intelligent <span className="text-(--primary) italic">ERP</span>{" "}
+                Intelligent <span className="text-primary italic">ERP</span>
                 Ecosystem for Modern Madrashas
               </>
             )}
@@ -177,7 +179,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
               <Link href={dashboardUrl} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full h-14 px-8 text-lg font-bold shadow-xl shadow-(--primary)/20 rounded-2xl group transition-all hover:scale-105 active:scale-95 bg-(--primary) text-white"
+                  className="w-full h-14 px-8 text-lg font-bold shadow-xl shadow-primary/20 rounded-2xl group transition-all hover:scale-105 active:scale-95 bg-primary text-white"
                 >
                   <LayoutDashboard className="mr-2 w-5 h-5" />
                   ড্যাশবোর্ড দেখুন
@@ -188,7 +190,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
               <Link href="/register-madrasha" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full h-14 px-8 text-lg font-bold shadow-xl shadow-(--primary)/20 rounded-2xl group transition-all hover:scale-105 active:scale-95 bg-(--primary) text-white"
+                  className="w-full h-14 px-8 text-lg font-bold shadow-xl shadow-primary/20 rounded-2xl group transition-all hover:scale-105 active:scale-95 bg-primary text-white"
                 >
                   মাদরাসা রেজিস্ট্রেশন করুন
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -233,6 +235,13 @@ export default function HomeClient({ user, plans: serverPlans }) {
             </div>
           </div>
         </div>
+        <div className="absolute inset-0 w-full h-full opacity-15 pointer-events-none z-0 text-primary/50">
+          <Calligraphy
+            size="100%"
+            className="w-full h-full"
+            imageSrc={imgCalligraphy.src}
+          />
+        </div>
       </section>
 
       <section
@@ -242,7 +251,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
         <IslamicPattern variant="star" opacity={0.03} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-sm font-bold text-(--primary) uppercase tracking-[0.2em] mb-4">
+            <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
               Powerful Features
             </h2>
             <p className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -283,7 +292,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
         <IslamicPattern variant="floral" opacity={0.04} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-sm font-bold text-(--primary) uppercase tracking-[0.2em] mb-4">
+            <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">
               Flexible Pricing
             </h2>
             <p className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -306,10 +315,10 @@ export default function HomeClient({ user, plans: serverPlans }) {
               : plans.map((plan) => (
                   <div
                     key={plan._id}
-                    className={`p-8 rounded-3xl border flex flex-col justify-between relative transition-all ${plan.code === "STANDARD" ? "border-(--primary) ring-4 ring-(--primary)/5 bg-(--primary)/2 md:scale-105 z-10" : "border-slate-100"}`}
+                    className={`p-8 rounded-3xl border flex flex-col justify-between relative transition-all ${plan.code === "STANDARD" ? "border-primary ring-4 ring-primary/5 bg-primary/2 md:scale-105 z-10" : "border-slate-100"}`}
                   >
                     {plan.code === "STANDARD" && (
-                      <div className="absolute top-0 right-8 -translate-y-1/2 bg-(--primary) text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border-4 border-white">
+                      <div className="absolute top-0 right-8 -translate-y-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border-4 border-white">
                         Most Popular
                       </div>
                     )}
@@ -358,7 +367,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
                       className="w-full mt-auto"
                     >
                       <Button
-                        className={`w-full h-12 rounded-xl font-bold ${plan.code === "STANDARD" ? "bg-(--primary) text-white hover:opacity-90" : "bg-slate-900 text-white hover:bg-slate-800"}`}
+                        className={`w-full h-12 rounded-xl font-bold ${plan.code === "STANDARD" ? "bg-primary text-white hover:opacity-90" : "bg-slate-900 text-white hover:bg-slate-800"}`}
                       >
                         Choose Plan
                       </Button>
@@ -369,7 +378,7 @@ export default function HomeClient({ user, plans: serverPlans }) {
         </div>
       </section>
 
-      <section className="py-24 bg-(--primary) text-white relative overflow-hidden">
+      <section className="py-24 bg-primary text-white relative overflow-hidden">
         <IslamicPattern variant="geometric" opacity={0.1} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">

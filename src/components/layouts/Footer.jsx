@@ -13,10 +13,10 @@ export default function Footer() {
           <div className="space-y-4">
             <Link
               href="/"
-              className="flex items-center gap-2 font-black text-2xl text-[#064e3b] tracking-tight"
+              className="flex items-center gap-2 font-black text-2xl text-primary tracking-tight"
             >
-              <span className=" text-[#064e3b] italic">EduFilos</span>
-              <span className="text-xs font-bold uppercase tracking-widest bg-slate-800  px-2 py-0.5 rounded-md">
+              <span className=" text-primary italic">EduFilos</span>
+              <span className="text-xs font-bold uppercase tracking-widest bg-primary text-white  px-2 py-0.5 rounded-md">
                 ERP
               </span>
             </Link>
@@ -27,14 +27,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[#064e3b] text-sm font-bold uppercase tracking-wider mb-4">
+            <h4 className="text-primary text-sm font-bold uppercase tracking-wider mb-4">
               Product
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="#features"
-                  className="hover:text-[#064e3b] transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Features
                 </Link>
@@ -42,7 +42,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#pricing"
-                  className="hover:text-[#064e3b] transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Pricing Plans
                 </Link>
@@ -50,7 +50,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/security"
-                  className="hover:text-[#064e3b] transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Data Security
                 </Link>
@@ -59,14 +59,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[#064e3b] text-sm font-bold uppercase tracking-wider mb-4">
+            <h4 className="text-primary text-sm font-bold uppercase tracking-wider mb-4">
               Support
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/docs"
-                  className="hover:text-[#064e3b] transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Documentation
                 </Link>
@@ -74,7 +74,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-[#064e3b] transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Contact Support
                 </Link>
@@ -82,7 +82,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="hover:text-[#064e3b] transition-colors"
+                  className="hover:text-primary transition-colors"
                 >
                   Privacy & Terms
                 </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-[#064e3b] text-sm font-bold uppercase tracking-wider mb-4">
+            <h4 className="text-primary text-sm font-bold uppercase tracking-wider mb-4">
               Contact Info
             </h4>
             <address className="not-italic text-sm space-y-2 ">
@@ -107,11 +107,11 @@ export default function Footer() {
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="hover:text-[#064e3b] transition-colors"
+              className="hover:text-primary transition-colors"
             >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-[#064e3b] transition-colors">
+            <Link href="/terms" className="hover:text-primary transition-colors">
               Terms of Service
             </Link>
           </div>
