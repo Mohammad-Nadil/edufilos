@@ -7,7 +7,7 @@ import Link from "next/link";
 import IslamicPattern from "@/components/ui/IslamicPattern";
 import { PLAN_DETAILS } from "@/temp";
 
-
+function CheckoutContent() {
   const searchParams = useSearchParams();
   
   const planCode = (searchParams.get("plan") || "STANDARD").toUpperCase();
@@ -67,7 +67,7 @@ import { PLAN_DETAILS } from "@/temp";
 
   return (
     <div className="w-full max-w-5xl bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-12 border border-slate-200/50 relative z-10">
-      <div className={`md:col-span-5 bg-linear-to-b ${activePlan.bgClass} p-8 text-white flex flex-col justify-between relative overflow-hidden`}>
+      <div className={`md:col-span-5 bg-gradient-to-b ${activePlan.bgClass} p-8 text-white flex flex-col justify-between relative overflow-hidden`}>
         <div className="relative z-10">
           <Link href="/#pricing" className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
