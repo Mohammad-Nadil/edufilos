@@ -1,9 +1,7 @@
-import { Amiri, Hind_Siliguri } from "next/font/google";
+import { Amiri, Hind_Siliguri, Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layouts/Footer";
 import PublicHeader from "@/components/layouts/PublicHeader";
-import {} from "next/font/google";
-import "./globals.css";
 import { LanguageProvider } from "../context/LanguageContext";
 
 const amiri = Amiri({
@@ -15,7 +13,12 @@ const amiri = Amiri({
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-hind",
+  variable: "--font-hind-siliguri",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata = {
@@ -28,12 +31,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${amiri.variable} ${hindSiliguri.variable}  h-full antialiased`}
+      className={`${amiri.variable} ${hindSiliguri.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body cz-shortcut-listen="true" className="min-h-full flex flex-col">
         <LanguageProvider>
           <PublicHeader />
-          {children}
+          <main className="flex-1">{children}</main>
           <Footer />
         </LanguageProvider>
       </body>
