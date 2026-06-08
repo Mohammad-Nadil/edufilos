@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import Card from "../ui/Card";
 import Calligraphy from "../ui/Caligraphy";
-import IslamicPattern from "../ui/IslamicPattern";
 import imgCalligraphy from "../../../public/kufik.png";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -176,7 +175,7 @@ const Features = () => {
         </div>
       </div>
 
-      <div className="absolute top-[-5%] right-[-10%] sm:right-[-5%] md:top-6 md:right-[-2%] w-[180px] sm:w-[260px] md:w-[380px] aspect-square pointer-events-none opacity-[0.05] md:opacity-10 z-0 select-none overflow-hidden">
+      <div className="absolute top-0 right-[-10%]  md:top-6 md:right-[-2%] translate-x-1/3 w-45 sm:w-65 md:w-100 aspect-square pointer-events-none opacity-[0.05] md:opacity-10 z-0 select-none overflow-hidden">
         <Calligraphy
           imageSrc={imgCalligraphy.src}
           textColor="#047857"

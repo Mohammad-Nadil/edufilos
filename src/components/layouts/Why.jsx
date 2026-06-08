@@ -48,7 +48,6 @@ const Why = () => {
 
   return (
     <section className="py-24 bg-primary text-white relative overflow-hidden">
-      <IslamicPattern variant="geometric" opacity={0.1} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

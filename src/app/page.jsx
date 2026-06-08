@@ -10,22 +10,12 @@ export default function page({ user }) {
   const language = "bn";
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 antialiased font-sans  ">
+    <div className="min-h-screen bg-white  antialiased font-sans  ">
       <Banner user={user} language={language} />
-
       <Features language={language} />
-
       <Pricing language={language} />
-
       <Why language={language} />
-
-
       <FAQ language={language} />
-
-      {/* 
-    testimonials
-    footer
-     */}
     </div>
   );
 }

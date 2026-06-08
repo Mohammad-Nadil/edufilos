@@ -80,7 +80,7 @@ const FAQ = () => {
           <h2 className="text-xs md:text-sm font-black text-primary uppercase tracking-[0.2em] mb-3 md:mb-4">
             {lang === "BN" ? "জিজ্ঞাসিত প্রশ্নাবলী" : "Have Questions?"}
           </h2>
-          <p className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 mb-4 md:mb-6 leading-tight">
+          <p className="text-2xl sm:text-3xl md:text-5xl font-black   mb-4 md:mb-6 leading-tight">
             {lang === "BN"
               ? "সাধারণ কিছু প্রশ্নের উত্তর"
               : "Frequently Asked Questions"}
@@ -98,7 +98,7 @@ const FAQ = () => {
             return (
               <div
                 key={index}
-                className={`border rounded-2xl transition-all duration-300 bg-white ${
+                className={`border rounded-2xl transition-all duration-300 bg-white  hover:border-slate-600 ${
                   isOpen
                     ? "border-primary/30 shadow-md shadow-primary/5"
                     : "border-slate-200/60 hover:border-slate-300 shadow-sm"
@@ -145,7 +145,7 @@ const FAQ = () => {
         </div>
       </div>
 
-      <div className="absolute top-1/2 right-[-6%] lg:right-[-2%] -translate-y-1/2 translate-x-1/3 w-40 sm:w-60 md:w-100 aspect-square pointer-events-none opacity-[0.05] md:opacity-10 z-0 select-none overflow-hidden">
+      <div className="absolute top-0 right-0 translate-x-1/2 md:translate-y-1/2 md:translate-x-1/3 w-40 sm:w-60 md:w-100 aspect-square pointer-events-none opacity-10 z-0 select-none overflow-hidden">
         <Calligraphy
           imageSrc={imgCalligraphy.src}
           textColor="#047857"

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import IslamicPattern from "../ui/IslamicPattern";
 import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import Button from "../ui/Button";
@@ -15,7 +14,7 @@ const Pricing = ({ plans: serverPlans }) => {
 
   const [plans] = useState(serverPlans || PLAN_LIST);
   const [loadingPlans] = useState(false);
-
+  
   const getBillingCycleText = (cycle) => {
     const cycleLower = cycle?.toLowerCase();
     if (lang === "BN") {
@@ -29,7 +28,6 @@ const Pricing = ({ plans: serverPlans }) => {
       id="pricing"
       className="py-16 md:py-24 relative overflow-hidden bg-white"
     >
-
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
           <h2 className="text-xs md:text-sm font-black text-primary uppercasee mb-3 md:mb-4">
@@ -50,7 +48,7 @@ const Pricing = ({ plans: serverPlans }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-6 xl:gap-8 max-w-6xl mx-auto items-stretch lg:pt-4">
           {loadingPlans
             ? [1, 2, 3].map((i) => (
-                <div
+                <div 
                   key={i}
                   className="h-113 md:h-125 rounded-3xl bg-slate-50 animate-pulse border border-slate-100"
                 />
@@ -58,7 +56,7 @@ const Pricing = ({ plans: serverPlans }) => {
             : plans.map((plan) => (
                 <div
                   key={plan.code}
-                  className={`p-6 sm:p-8 rounded-3xl border flex flex-col justify-between relative transition-all bg-white ${
+                  className={`p-6 sm:p-8 rounded-3xl border flex flex-col justify-between relative transition-all bg-white hover:shadow-lg duration-300 ${
                     plan.code === "STANDARD"
                       ? "border-primary ring-4 ring-primary/5 shadow-md lg:scale-105 z-10 my-2 lg:my-0"
                       : "border-slate-200/60 shadow-sm"
@@ -167,7 +165,7 @@ const Pricing = ({ plans: serverPlans }) => {
                     className="w-full mt-auto block"
                   >
                     <Button
-                      className={`w-full h-11 sm:h-12 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all ${
+                      className={`w-full h-11 sm:h-12 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all hover:bg-primary/80! duration-300 hover:text-white ${
                         plan.code === "STANDARD"
                           ? "bg-primary text-white hover:opacity-95 shadow-md shadow-primary/10"
                           : "bg-slate-900 text-white hover:bg-slate-800"

@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-slate-900 text-xs font-black uppercase tracking-widest mb-6">
+            <h4 className="text-slate-900  font-black uppercase  mb-6">
               {lang === "BN" ? "সহজ নেভিগেশন" : "Quick Navigation"}
             </h4>
             <ul className="space-y-3 text-sm font-medium">
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-slate-900 text-xs font-black uppercase tracking-widest mb-6">
+            <h4 className="text-slate-900 font-black uppercase  mb-6">
               {lang === "BN" ? "আমাদের সেবাসমূহ" : "Our Solutions"}
             </h4>
             <ul className="space-y-3 text-sm font-medium">
@@ -107,7 +107,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-slate-900 text-xs font-black uppercase tracking-widest mb-6">
+            <h4 className="text-slate-900  font-black uppercase  mb-6">
               {lang === "BN" ? "যোগাযোগ ও সাপোর্ট" : "Contact & Support"}
             </h4>
             <div className="space-y-5">
@@ -168,7 +168,7 @@ export default function Footer() {
             {lang === "BN" ? "সর্বস্বত্ব সংরক্ষিত।" : "All rights reserved."}
           </div>
 
-          <div className="order-1 lg:order-2 flex items-center gap-1.5 text-[10px] tracking-widest font-black uppercase text-slate-400">
+          <div className="order-1 lg:order-2 flex items-center gap-1.5 text-[10px]  font-black uppercase text-slate-400">
             <span>
               {lang === "BN" ? "সার্বিক তত্ত্বাবধানে" : "Provided By"}
             </span>

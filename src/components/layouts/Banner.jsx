@@ -1,12 +1,10 @@
 "use client";
 
 import React from "react";
-import IslamicPattern from "../ui/IslamicPattern";
 import { ArrowRight, LayoutDashboard, Zap } from "lucide-react";
 import Link from "next/link";
 import Button from "../ui/Button";
 import Calligraphy from "../ui/Caligraphy";
-
 import imgCalligraphy from "../../../public/calligraphyBg.png";
 import imgBism from "../../../public/bism.png";
 import { useLanguage } from "@/context/LanguageContext";
@@ -21,10 +19,10 @@ const Banner = ({ user }) => {
       className="relative pt-24 pb-24 md:pt-32 md:pb-36 overflow-hidden bg-white"
       id="home"
     >
-      <IslamicPattern variant="floral" opacity={0.03} />
 
       <div className="container mx-auto px-4 relative z-10 text-center">
         <div
+        
           className="mx-auto mb-6 transition-colors duration-300 w-full max-w-70 sm:max-w-90 md:max-w-100 h-12 sm:h-16"
           style={{
             backgroundColor: "#047857",
