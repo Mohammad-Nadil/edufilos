@@ -4,6 +4,7 @@ import Banner from "@/components/layouts/Banner";
 import Features from "@/components/layouts/Features";
 import Pricing from "@/components/layouts/Pricing";
 import Why from "@/components/layouts/Why";
+import FAQ from "@/components/layouts/FAQ";
 
 export default function page({ user }) {
   const language = "bn";
@@ -17,6 +18,14 @@ export default function page({ user }) {
       <Pricing language={language} />
 
       <Why language={language} />
+
+
+      <FAQ language={language} />
+
+      {/* 
+    testimonials
+    footer
+     */}
     </div>
   );
 }

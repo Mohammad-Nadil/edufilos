@@ -5,18 +5,33 @@ import Link from "next/link";
 import Button from "../ui/Button";
 import Calligraphy from "../ui/Caligraphy";
 import imgCalligraphy from "../../../public/calligraphyBg.png";
+import imgBism from "../../../public/bism.png";
 
 const Banner = ({ user, language }) => {
   const dashboardUrl = user?.role ? `/dashboard/${user.role}` : "/login";
   return (
-    <section className="relative pt-20 pb-32 overflow-hidden">
-      <IslamicPattern variant="geometric" opacity={0.07} />
+    <section className="relative  pt-20 pb-32 overflow-hidden">
+      {/* <IslamicPattern variant="geometric" opacity={0.07} /> */}
       <div className="container mx-auto px-4 relative z-10 text-center">
+        {" "}
+        <div
+          className="mx-auto mb-6 transition-colors duration-300 w-full aspect-20/2"
+          style={{
+            backgroundColor: "#047850",
+            maskImage: `url(${imgBism.src})`,
+            WebkitMaskImage: `url(${imgBism.src})`,
+            maskSize: "contain",
+            WebkitMaskSize: "contain",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+          }}
+        />
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <Zap className="w-3.5 h-3.5 fill-current" />
           <p>إدارة مدرستك بذكاء | Premium Ecosystem</p>
         </div>
-
         <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
           {language === "bn" ? (
             <>
@@ -30,12 +45,10 @@ const Banner = ({ user, language }) => {
             </>
           )}
         </h1>
-
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
           হিসাববিজ্ঞান, অনলাইন এডমিশন, রেজাল্ট শীট এবং অটোমেটেড রিপোর্ট
           জেনারেশনসহ আধুনিক মাদরাসার সব প্রশাসনিক কাজ এখন এক প্ল্যাটফর্মে।
         </p>
-
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           {user && user.role ? (
             <Link href={dashboardUrl} className="w-full sm:w-auto">
@@ -69,7 +82,6 @@ const Banner = ({ user, language }) => {
             </Button>
           </Link>
         </div>
-
         <div className="mt-20 relative max-w-5xl mx-auto">
           <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent z-20 pointer-events-none" />
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-2 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-1000 delay-300">
@@ -97,11 +109,11 @@ const Banner = ({ user, language }) => {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 w-full h-full opacity-15 pointer-events-none z-0 text-primary/50">
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0  ">
         <Calligraphy
-          size="100%"
-          className="w-full h-full"
           imageSrc={imgCalligraphy.src}
+          textColor="#26262605"
+          className=" "
         />
       </div>
     </section>

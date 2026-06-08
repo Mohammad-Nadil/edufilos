@@ -1,6 +1,8 @@
 import React from "react";
 import IslamicPattern from "../ui/IslamicPattern";
 import { ShieldCheck, MessageSquare, HelpCircle } from "lucide-react";
+import Calligraphy from "../ui/Caligraphy";
+import imgKun from "../../../public/kun.png";
 
 const Why = ({ language }) => {
   return (
@@ -57,6 +59,13 @@ const Why = ({ language }) => {
             <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-emerald-500/20 blur-3xl" />
           </div>
         </div>
+      </div>
+      <div className="absolute bottom-[-5%] right-[-5%] lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2 lg:right-[-2%] w-40 sm:w-60 md:w-95 aspect-square pointer-events-none opacity-[0.04] lg:opacity-[0.06] z-0 select-none overflow-hidden">
+        <Calligraphy
+          imageSrc={imgKun.src}
+          textColor="#ffffff"
+          bgColor="transparent"
+        />
       </div>
     </section>
   );
