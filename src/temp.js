@@ -1,6 +1,7 @@
 export const PLAN_DETAILS = {
   STANDARD: {
-    name: "Standard ",
+    name: "Standard",
+    name_bn: "স্ট্যান্ডার্ড",
     code: "STANDARD",
     price: 4900,
     billingCycle: "monthly",
@@ -10,7 +11,8 @@ export const PLAN_DETAILS = {
     accentText: "text-emerald-400"
   },
   PREMIUM: {
-    name: "Premium ",
+    name: "Premium",
+    name_bn: "প্রিমিয়াম",
     code: "PREMIUM",
     price: 9999,
     billingCycle: "monthly",
@@ -20,7 +22,8 @@ export const PLAN_DETAILS = {
     accentText: "text-blue-400"
   },
   ENTERPRISE: {
-    name: "Enterprise ",
+    name: "Enterprise",
+    name_bn: "এন্টারপ্রাইজ",
     code: "ENTERPRISE",
     price: 14999,
     billingCycle: "yearly",

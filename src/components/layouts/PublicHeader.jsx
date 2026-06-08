@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { LayoutDashboard, Sparkles, Globe } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PublicHeader({ user }) {
-  const [lang, setLang] = useState("BN");
+  const { lang, toggleLanguage } = useLanguage();
 
   const dashboardUrl = user?.role ? `/dashboard/${user.role}` : "/login";
 
@@ -24,7 +25,7 @@ export default function PublicHeader({ user }) {
 
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
-              onClick={() => setLang(lang === "BN" ? "EN" : "BN")}
+              onClick={toggleLanguage}
               className="flex items-center justify-center gap-0.5 text-[11px] sm:text-xs font-bold text-slate-600 hover:text-emerald-800 bg-slate-100/90 border border-slate-200/40 px-2 py-1.5 rounded-xl transition-colors active:scale-95 select-none"
             >
               <Globe className="w-3 h-3 text-slate-400 shrink-0" />
@@ -35,11 +36,12 @@ export default function PublicHeader({ user }) {
                 {lang === "BN" ? "বাংলা" : "EN"}
               </span>
             </button>
+
             {user && user.role ? (
               <Link href={dashboardUrl} className="shrink-0">
                 <button className="h-8.5 px-3 text-xs font-bold text-white bg-emerald-800 hover:bg-emerald-900 shadow-sm active:scale-95 transition-all rounded-xl flex items-center gap-1">
                   <LayoutDashboard className="w-3.5 h-3.5" />
-                  <span>Dashboard</span>
+                  <span>{lang === "BN" ? "ড্যাশবোর্ড" : "Dashboard"}</span>
                 </button>
               </Link>
             ) : (
@@ -48,13 +50,13 @@ export default function PublicHeader({ user }) {
                   href="/login"
                   className="hidden xs:inline-block text-xs font-bold text-slate-600 hover:text-emerald-800 transition-colors px-1 py-1"
                 >
-                  Sign In
+                  {lang === "BN" ? "লগইন" : "Sign In"}
                 </Link>
 
                 <Link href="/register-madrasha" className="shrink-0">
                   <button className="h-8.5 px-2.5 sm:px-4 text-xs font-extrabold text-white bg-slate-900 hover:bg-slate-800 active:scale-95 transition-all rounded-xl flex items-center gap-1 shadow-md">
                     <Sparkles className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0 hidden sm:block" />
-                    <span>Get Started</span>
+                    <span>{lang === "BN" ? "শুরু করুন" : "Get Started"}</span>
                   </button>
                 </Link>
               </div>

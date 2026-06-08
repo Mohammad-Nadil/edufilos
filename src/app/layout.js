@@ -4,6 +4,7 @@ import Footer from "@/components/layouts/Footer";
 import PublicHeader from "@/components/layouts/PublicHeader";
 import {} from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "../context/LanguageContext";
 
 const amiri = Amiri({
   subsets: ["arabic"],
@@ -30,9 +31,11 @@ export default function RootLayout({ children }) {
       className={`${amiri.variable} ${hindSiliguri.variable}  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <PublicHeader />
-        {children}
-        <Footer />
+        <LanguageProvider>
+          <PublicHeader />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
