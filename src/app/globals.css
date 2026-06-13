@@ -9,7 +9,7 @@
   --text-muted: #64748b;
   --primary: #064e3b;
   --primary-foreground: #ffffff;
-  --accent-gold: #d97706;
+  --accent-gold: #b38f36;
   --border-color: #efece6;
 }
 .dark {
@@ -19,7 +19,7 @@
   --text-muted: #94a3b8;
   --primary: #10b981;
   --primary-foreground: #0f172a;
-  --accent-gold: #f59f0bab;
+  --accent-gold: #d4af37;
   --border-color: #2f3532;
 }
 
