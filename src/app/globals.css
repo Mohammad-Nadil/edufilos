@@ -13,17 +13,19 @@
   --border-color: #efece6;
 }
 .dark {
-  --background: #1e2220; 
-  --card-bg: #262a28; 
+  --background: #1e2220;
+  --card-bg: #262a28;
   --foreground: #e2e8f0;
   --text-muted: #94a3b8;
   --primary: #10b981;
-  --primary-foreground: #0f172a; 
+  --primary-foreground: #0f172a;
   --accent-gold: #f59f0bab;
   --border-color: #2f3532;
 }
 
 @theme {
+  --breakpoint-xs: 359px;
+
   --color-background: var(--background);
   --color-card: var(--card-bg);
   --color-foreground: var(--foreground);

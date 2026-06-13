@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
       dark `}
     >
       <body suppressHydrationWarning className=" flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LanguageProvider>
             <PublicHeader />
             <main className="flex-1  ">{children}</main>

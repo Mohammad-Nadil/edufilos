@@ -39,9 +39,8 @@ export default function Banner() {
         </div>
       )}
 
-      <Container className="  relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-12">
-        {" "}
-        <div className="lg:col-span-6 flex flex-col justify-center text-left space-y-4 max-w-2xl mx-auto lg:mx-0">
+      <Container className=" px-2! sm:px-4 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center py-4 sm:py-12">
+        <div className="lg:col-span-6 flex flex-col justify-center text-left gap-y-2 sm:gap-y-4 max-w-2xl mx-auto lg:mx-0">
           <div className="inline-flex items-center gap-2 border border-primary/20 rounded-full px-3 py-1 text-xs font-semibold  w-fit animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             {lang === "BN"
@@ -49,16 +48,16 @@ export default function Banner() {
               : "All-in-One Madrasha Management System"}
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-black text-foreground tracking-tight leading-[1.15] font-en">
+          <h1 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl 2xl:text-6xl font-black text-foreground leading-[1.2]  font-en">
             {lang === "BN" ? (
               <>
-                আপনার মাদরাসা পরিচালনা করুন,{" "}
+                আপনার মাদরাসা পরিচালনা করুন,<br /> {" "}
                 <span className="italic font-medium text-gold">জ্ঞান</span>{" "}
                 ছড়িয়ে দিন।
               </>
             ) : (
               <>
-                Manage Your Madrasha. Inspire{" "}
+                Manage Your Madrasha. <br /> Inspire{" "}
                 <span className="italic font-medium text-gold">Knowledge</span>.
               </>
             )}
@@ -115,7 +114,7 @@ export default function Banner() {
         </div>
         <div className="lg:col-span-6 flex flex-col gap-y-10 items-center justify-center relative w-full aspect-square mt-8 lg:mt-0">
           <div className="flex flex-col space-y-2 mt-4 font-ar text-center gap-3">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-arabic text-gold tracking-wide leading-relaxed font-medium animate-fade-in">
+            <h3 className="text-2xl xs:text-3xl  md:text-4xl xl:text-5xl font-arabic text-gold tracking-wide leading-relaxed font-medium animate-fade-in">
               اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
             </h3>
 
