@@ -180,8 +180,7 @@ export default function Footer() {
               {lang === "BN" ? "ডেভেলপমেন্ট পার্টনার:" : "Developed by:"}
             </span>
 
-            {/* devonionX লোগো প্লেসহোল্ডার (একটি স্টাইলিশ মিনিমাল অনিয়ন/ডেভ আইকন) */}
-            <Image src={agencyLogo} alt="agency logo" className="max-w-40 contrast-0 dark:brightness-100"/>
+            <Image src={agencyLogo} alt="agency logo" className="max-w-40 contrast-0 dark:contrast-100"/>
           </Link>
         </div>
       </Container>

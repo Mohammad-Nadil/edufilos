@@ -75,20 +75,21 @@ export default function Banner() {
               : "EduFilos is a complete solution to manage students, teachers, fees, exams, attendance and everything your madrasha needs — in one powerful and easy-to-use platform."}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <Link
-              href="#register"
-              className="h-12 px-6 rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-md hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-            >
-              {lang === "BN" ? "শুরু করুন এখন →" : "Get Started Now →"}
-            </Link>
-            <Link
-              href="#features"
-              className="h-12 px-6 rounded-xl bg-card border border-border-custom text-foreground font-bold text-sm shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 transition-all"
-            >
-              {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
-            </Link>
-          </div>
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center justify-center sm:justify-start sm:gap-4 pt-2 w-full">
+  <Link
+    href="#register"
+    className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-md hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+  >
+    {lang === "BN" ? "শুরু করুন এখন →" : "Get Started Now →"}
+  </Link>
+  
+  <Link
+    href="#features"
+    className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-card border border-border-custom text-foreground font-bold text-sm shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+  >
+    {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
+  </Link>
+</div>
 
           <div className="grid grid-cols-4 gap-2 sm:gap-6 pt-8 border-t border-border-custom/50">
             {miniFeatures.map((feat, idx) => {
