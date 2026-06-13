@@ -1,23 +1,51 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a; 
-  --primary: #064e3b;    
+  --background: #f7f2ee;
+  --card-bg: #ffffff;
+  --foreground: #0f172a;
+  --text-muted: #64748b;
+  --primary: #064e3b;
   --primary-foreground: #ffffff;
+  --accent-gold: #d97706;
+  --border-color: #efece6;
+}
+.dark {
+  --background: #1e2220; 
+  --card-bg: #262a28; 
+  --foreground: #e2e8f0;
+  --text-muted: #94a3b8;
+  --primary: #10b981;
+  --primary-foreground: #0f172a; 
+  --accent-gold: #f59f0bab;
+  --border-color: #2f3532;
 }
 
 @theme {
   --color-background: var(--background);
+  --color-card: var(--card-bg);
   --color-foreground: var(--foreground);
+  --color-muted: var(--text-muted);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --font-amiri: var(--font-amiri), serif;
-  --font-sans: var(--font-font-hind-siliguri), var(--font-inter), sans-serif;
+  --color-gold: var(--accent-gold);
+  --color-border-custom: var(--border-color);
+
+  --font-en: var(--font-english), sans-serif;
+  --font-bn: var(--font-bangla), sans-serif;
+  --font-ar: var(--font-arabic), serif;
+
+  --font-roboto: var(--font-roboto), sans-serif;
+  --font-sans: var(--font-bangla), var(--font-english), sans-serif;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans); 
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }

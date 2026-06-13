@@ -5,17 +5,19 @@ import Features from "@/components/layouts/Features";
 import Pricing from "@/components/layouts/Pricing";
 import Why from "@/components/layouts/Why";
 import FAQ from "@/components/layouts/FAQ";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function page({ user }) {
   const language = "bn";
 
   return (
-    <div className="min-h-screen bg-white  antialiased font-sans  ">
-      <Banner user={user} language={language} />
-      <Features language={language} />
+    <div className=" antialiased font-sans  ">
+      <Banner  />
+      {/* <Features language={language} />
       <Pricing language={language} />
       <Why language={language} />
-      <FAQ language={language} />
+      <FAQ language={language} /> */}
+
     </div>
   );
 }

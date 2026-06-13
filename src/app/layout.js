@@ -1,24 +1,38 @@
-import { Amiri, Hind_Siliguri, Inter } from "next/font/google";
+import {
+  Playfair_Display,
+  Noto_Serif_Bengali,
+  Amiri,
+  Roboto,
+} from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layouts/Footer";
 import PublicHeader from "@/components/layouts/PublicHeader";
 import { LanguageProvider } from "../context/LanguageContext";
+import { ThemeProvider } from "next-themes";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-roboto",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-english",
+});
+
+const notoBengali = Noto_Serif_Bengali({
+  subsets: ["bengali"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-bangla",
+});
 
 const amiri = Amiri({
   subsets: ["arabic"],
   weight: ["400", "700"],
-  variable: "--font-amiri",
-});
-
-const hindSiliguri = Hind_Siliguri({
-  subsets: ["bengali"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-hind-siliguri",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-arabic",
 });
 
 export const metadata = {
@@ -31,14 +45,18 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${amiri.variable} ${hindSiliguri.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={` ${playfair.variable} ${notoBengali.variable} ${amiri.variable} ${roboto.variable} h-full antialiased
+      dark `}
     >
-      <body cz-shortcut-listen="true" className="min-h-full flex flex-col">
-        <LanguageProvider>
-          <PublicHeader />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LanguageProvider>
+      <body cz-shortcut-listen="true" className=" flex flex-col">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <LanguageProvider>
+            <PublicHeader />
+            <main className="flex-1  ">{children}</main>
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

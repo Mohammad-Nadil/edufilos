@@ -1,148 +1,168 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, LayoutDashboard, Zap } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import Button from "../ui/Button";
-import Calligraphy from "../ui/Caligraphy";
-import imgCalligraphy from "../../../public/calligraphyBg.png";
-import imgBism from "../../../public/bism.png";
 import { useLanguage } from "@/context/LanguageContext";
 
-const Banner = ({ user }) => {
+import BannerImg from "@/../public/banner.jpeg";
+import MacImg from "@/../public/mac.png";
+import PhoneImg from "@/../public/phone.png";
+import Placeholder from "@/../public/wall.jpg";
+import { CheckCircle2, ShieldCheck, Tag, Zap } from "lucide-react";
+
+export default function Banner() {
   const { lang } = useLanguage();
 
-  const dashboardUrl = user?.role ? `/dashboard/${user.role}` : "/login";
+  const miniFeatures = [
+    { en: "Easy To Use", bn: "সহজ ব্যবহার পদ্ধতি", icon: CheckCircle2 },
+    { en: "Secure & Reliable", bn: "নিরাপদ ও বিশ্বস্ত", icon: ShieldCheck },
+    { en: "Affordable Price", bn: "সাশ্রয়ী মূল্য", icon: Tag },
+    { en: "Advanced System", bn: "আধুনিক সিস্টেম", icon: Zap },
+  ];
 
   return (
     <section
-      className="relative pt-24 pb-24 md:pt-32 md:pb-36 overflow-hidden bg-white"
-      id="home"
+      id="banner"
+      className="relative w-full pt-20 sm:pt-24  2xl:pt-12 flex items-center overflow-hidden bg-background"
     >
+      {BannerImg && (
+        <div className="absolute inset-0 z-0 saturate-50 opacity-20 pointer-events-none dark:opacity-10 dark:saturate-0">
+          <Image
+            src={BannerImg}
+            alt="Banner Texture"
+            fill
+            priority
+            className="object-cover"
+          />
+        </div>
+      )}
 
-      <div className="container mx-auto px-4 relative z-10 text-center">
-        <div
-        
-          className="mx-auto mb-6 transition-colors duration-300 w-full max-w-70 sm:max-w-90 md:max-w-100 h-12 sm:h-16"
-          style={{
-            backgroundColor: "#047857",
-            maskImage: `url(${imgBism.src})`,
-            WebkitMaskImage: `url(${imgBism.src})`,
-            maskSize: "contain",
-            WebkitMaskSize: "contain",
-            maskRepeat: "no-repeat",
-            WebkitMaskRepeat: "no-repeat",
-            maskPosition: "center",
-            WebkitMaskPosition: "center",
-          }}
-        />
-
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 md:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 select-none">
-          <Zap className="w-3.5 h-3.5 fill-current text-amber-500" />
-          <p>
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-12">
+        <div className="lg:col-span-6 flex flex-col justify-center text-left space-y-4 max-w-2xl mx-auto lg:mx-0">
+          <div className="inline-flex items-center gap-2 border border-primary/20 rounded-full px-3 py-1 text-xs font-semibold  w-fit animate-fade-in">
+            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
             {lang === "BN"
-              ? "إدارة مدرستك بذكاء | প্রিমিয়াম ইকোসিস্টেম"
-              : "إدارة مدرستك بذكاء | Premium Ecosystem"}
+              ? "অল-ইন-ওয়ান মাদরাসা ম্যানেজমেন্ট সিস্টেম"
+              : "All-in-One Madrasha Management System"}
+          </div>
+
+          <h1 className="text-2xl sm:text-4xl md:text-5xl 2xl:text-6xl font-black text-foreground tracking-tight leading-[1.15] font-en">
+            {lang === "BN" ? (
+              <>
+                আপনার মাদরাসা পরিচালনা করুন,{" "}
+                <span className="italic font-medium text-gold">জ্ঞান</span>{" "}
+                ছড়িয়ে দিন।
+              </>
+            ) : (
+              <>
+                Manage Your Madrasha. Inspire{" "}
+                <span className="italic font-medium text-gold">Knowledge</span>.
+              </>
+            )}
+          </h1>
+
+          <p className="text-primary font-bold text-xl sm:text-2xl md:text-3xl 2xl:text-5xl tracking-tight  font-en">
+            {lang === "BN"
+              ? "গড়ে তুলুন আগামী দিনের সুন্দর ভবিষ্যৎ।"
+              : "Shape a Better Tomorrow."}
           </p>
-        </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 mb-6 leading-[1.15] max-w-5xl mx-auto">
-          {lang === "BN" ? (
-            <>
-              আধুনিক মাদরাসার জন্য{" "}
-              <span className="text-primary italic font-black">EduFilos</span>{" "}
-              ERP
-            </>
-          ) : (
-            <>
-              Intelligent{" "}
-              <span className="text-primary italic font-black">ERP</span>{" "}
-              Ecosystem for Modern Madrashas
-            </>
-          )}
-        </h1>
+          <p className="text-base sm:text-lg text-muted font-medium max-w-xl leading-relaxed mt-5 md:mt-10">
+            {lang === "BN"
+              ? "EduFilos হলো ছাত্র, শিক্ষক, ফিস, পরীক্ষা ও হাজিরাসহ একটি মাদরাসার যাবতীয় প্রয়োজনীয় সবকিছু এক প্ল্যাটফর্মে সহজে ম্যানেজ করার সম্পূর্ণ সমাধান।"
+              : "EduFilos is a complete solution to manage students, teachers, fees, exams, attendance and everything your madrasha needs — in one powerful and easy-to-use platform."}
+          </p>
 
-        <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-600 mb-10 leading-relaxed font-medium">
-          {lang === "BN"
-            ? "হিসাববিজ্ঞান, অনলাইন এডমিশন, রেজাল্ট শীট এবং অটোমেটেড রিপোর্ট জেনারেশনসহ আধুনিক মাদরাসার সব প্রশাসনিক কাজ এখন এক প্ল্যাটফর্মে।"
-            : "Streamline accounting, online admissions, result sheets, and automated report generation. Manage your entire institution inside a single unified cloud platform."}
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
-          {user && user.role ? (
-            <Link href={dashboardUrl} className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full h-14 px-8 text-base font-bold shadow-xl shadow-primary/20 rounded-2xl group transition-all hover:scale-[1.02] active:scale-95 bg-primary text-white flex items-center justify-center gap-2"
-              >
-                <LayoutDashboard className="w-5 h-5 shrink-0" />
-                <span>
-                  {lang === "BN" ? "ড্যাশবোর্ড দেখুন" : "Go to Dashboard"}
-                </span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0" />
-              </Button>
-            </Link>
-          ) : (
-            <Link href="/register-madrasha" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full h-14 px-8 text-base font-bold shadow-xl shadow-primary/20 rounded-2xl group transition-all hover:scale-[1.02] active:scale-95 bg-primary text-white flex items-center justify-center gap-2"
-              >
-                <span>
-                  {lang === "BN"
-                    ? "মাদরাসা রেজিস্ট্রেশন করুন"
-                    : "Register Your Madrasha"}
-                </span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0" />
-              </Button>
-            </Link>
-          )}
-
-          <Link href="#features" className="w-full sm:w-auto">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full h-14 px-8 text-base font-bold border-slate-200 hover:bg-slate-50 rounded-2xl transition-all text-slate-700 bg-white"
+          <div className="flex flex-wrap items-center gap-4 pt-2">
+            <Link
+              href="#register"
+              className="h-12 px-6 rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-md hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
-              {lang === "BN" ? "ফিচারসমূহ দেখুন" : "Explore Features"}
-            </Button>
-          </Link>
+              {lang === "BN" ? "শুরু করুন এখন →" : "Get Started Now →"}
+            </Link>
+            <Link
+              href="#features"
+              className="h-12 px-6 rounded-xl bg-card border border-border-custom text-foreground font-bold text-sm shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 transition-all"
+            >
+              {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2 sm:gap-6 pt-8 border-t border-border-custom/50">
+            {miniFeatures.map((feat, idx) => {
+              const Icon = feat.icon;
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center text-center sm: space-y-3 group"
+                >
+                  {/* আইকন কন্টেইনার - এখানে হোভার ইফেক্টও যোগ করা হয়েছে */}
+                  <div className="w-12 h-12 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
+                    <Icon className="w-6 h-6" />
+                  </div>
+
+                  {/* টেক্সট */}
+                  <span className="text-xs sm:text-sm font-bold text-foreground/90 tracking-wide">
+                    {lang === "BN" ? feat.bn : feat.en}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
+        <div className="lg:col-span-6 flex flex-col gap-y-10 items-center justify-center relative w-full aspect-square mt-8 lg:mt-0">
+          <div className="flex flex-col space-y-2 mt-4 font-ar text-center gap-3">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-arabic text-gold tracking-wide leading-relaxed font-medium animate-fade-in">
+              اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+            </h3>
 
-        <div className="mt-16 md:mt-24 relative max-w-5xl mx-auto px-2 sm:px-0">
-          <div className="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent z-20 pointer-events-none bottom-0.5" />
+            <p className="text-xs sm:text-sm text-muted font-medium italic tracking-wide max-w-md font-en">
+              {lang === "BN"
+                ? "“পাঠ করুন আপনার পালনকর্তার নামে যিনি সৃষ্টি করেছেন।” — সূরা আল-আলাক: ১"
+                : "“Read in the name of your Lord who created.” — Quran 96:1"}
+            </p>
+          </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-slate-100 p-2 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-1000 delay-300">
-            <div className="rounded-2xl bg-white border border-slate-200/60 shadow-inner overflow-hidden aspect-video relative">
-              <div className="absolute top-0 inset-x-0 h-10 border-b border-slate-100 bg-slate-50 flex items-center px-4 gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-              </div>
-
+          <div className="relative w-full sm:w-[85%]  aspect-5/3 z-10 transition-transform duration-500 hover:scale-[1.01] rounded-2xl overflow-hidden ">
+            <Image
+              src={MacImg}
+              alt="EduFilos Dashboard Desktop View"
+              fill
+              priority
+              className="absolute w-full h-full z-20"
+            />
+            <div className="object-cover w-full h-full  z-10">
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/dtxuo6JuaVw?si=o5tfsR3x53A9kyrz"
+                src="https://www.youtube.com/embed/AjeBOZXOrgs?si=1ED7gNEh-sDoPz9X"
                 title="YouTube video player"
-                frameBorder="0"
+                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
               ></iframe>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 select-none">
-        <Calligraphy
-          imageSrc={imgCalligraphy.src}
-          textColor="#26262605"
-          className="w-full h-full object-cover"
-        />
+          <div className="absolute right-[2%] bottom-[5%] w-1/3  sm:w-[25%] aspect-3/6 z-20 drop-shadow-2xl transition-transform duration-500 hover:translate-y-1.25 rounded-3xl overflow-hidden">
+            <Image
+              src={PhoneImg}
+              alt="EduFilos Dashboard mobile View"
+              fill
+              priority
+              className="absolute w-full h-full z-40"
+            />
+            <Image
+              src={Placeholder}
+              alt="Calligraphy Background"
+              fill
+              priority
+              className="object-cover  z-30"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Banner;
+}
