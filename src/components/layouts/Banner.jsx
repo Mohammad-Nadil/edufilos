@@ -10,6 +10,7 @@ import MacImg from "@/../public/mac.png";
 import PhoneImg from "@/../public/phone.png";
 import Placeholder from "@/../public/wall.jpg";
 import { CheckCircle2, ShieldCheck, Tag, Zap } from "lucide-react";
+import Container from "../ui/Container";
 
 export default function Banner() {
   const { lang } = useLanguage();
@@ -38,7 +39,8 @@ export default function Banner() {
         </div>
       )}
 
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-12">
+      <Container className="  relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center py-12">
+        {" "}
         <div className="lg:col-span-6 flex flex-col justify-center text-left space-y-4 max-w-2xl mx-auto lg:mx-0">
           <div className="inline-flex items-center gap-2 border border-primary/20 rounded-full px-3 py-1 text-xs font-semibold  w-fit animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
@@ -47,7 +49,7 @@ export default function Banner() {
               : "All-in-One Madrasha Management System"}
           </div>
 
-          <h1 className="text-2xl sm:text-4xl md:text-5xl 2xl:text-6xl font-black text-foreground tracking-tight leading-[1.15] font-en">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-black text-foreground tracking-tight leading-[1.15] font-en">
             {lang === "BN" ? (
               <>
                 আপনার মাদরাসা পরিচালনা করুন,{" "}
@@ -137,10 +139,10 @@ export default function Banner() {
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/AjeBOZXOrgs?si=1ED7gNEh-sDoPz9X"
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
               ></iframe>
             </div>
           </div>
@@ -162,7 +164,7 @@ export default function Banner() {
             />
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
       className={` ${playfair.variable} ${notoBengali.variable} ${amiri.variable} ${roboto.variable} h-full antialiased
       dark `}
     >
-      <body cz-shortcut-listen="true" className=" flex flex-col">
+      <body suppressHydrationWarning className=" flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <LanguageProvider>
             <PublicHeader />

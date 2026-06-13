@@ -2,199 +2,180 @@
 
 import React from "react";
 import Link from "next/link";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
-import { FiExternalLink, FiPhone, FiMail, FiMapPin } from "react-icons/fi";
-import { GoDotFill } from "react-icons/go";
-import techfilos from "../../../public/techfilos.png";
-import Image from "next/image";
+import Container from "../ui/Container"; // আপনার তৈরি করা কন্টেইনার কম্পোনেন্ট
+import LogoIcon from "../ui/LogoIcon"; // আপনার লোগো আইকন
 import { useLanguage } from "@/context/LanguageContext";
+import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Globe, Mail, MapPin, Phone } from "lucide-react";
+
+
 export default function Footer() {
   const { lang } = useLanguage();
-  const currentYear = new Date().getFullYear();
 
-  const quickNav = [
-    { label: { BN: "হোম", EN: "Home" }, href: "#home" },
-    { label: { BN: "ফিচারসমূহ", EN: "Features" }, href: "#features" },
-    { label: { BN: "প্রাইসিং প্ল্যান", EN: "Pricing" }, href: "#pricing" },
-    { label: { BN: "আমাদের সম্পর্কে", EN: "About Us" }, href: "#" },
-    { label: { BN: "যোগাযোগ", EN: "Contact" }, href: "#" },
+  // সোশাল মিডিয়া লিংকসমূহ
+  const socials = [
+    { icon: FaFacebook, href: "#" },
+    { icon: FaTwitter, href: "#" },
+    { icon: FaYoutube, href: "#" },
+    { icon: FaLinkedin, href: "#" },
   ];
 
-  const solutions = [
-    { BN: "ছাত্র ব্যবস্থাপনা", EN: "Student Management" },
-    { BN: "অনলাইন এডমিশন", EN: "Online Admission" },
-    { BN: "পেরোল সিস্টেম", EN: "Payroll System" },
-    { BN: "রেজাল্ট ম্যানেজমেন্ট", EN: "Result Management" },
-    { BN: "অ্যাকাউন্টস লেজার", EN: "Account Ledger" },
+  // কুইক লিংকস গ্রুপ
+  const quickLinks = [
+    { href: "#home", en: "Home", bn: "হোম" },
+    { href: "#features", en: "Features", bn: "ফিচারসমূহ" },
+    { href: "#pricing", en: "Pricing", bn: "প্রাইসিং" },
+    { href: "#modules", en: "Modules", bn: "মডিউলস" },
+    { href: "#about", en: "About Us", bn: "আমাদের সম্পর্কে" },
+  ];
+
+  // রিসোর্সেস গ্রুপ
+  const resources = [
+    { href: "#blog", en: "Blog", bn: "ব্লগ" },
+    { href: "#help", en: "Help Center", bn: "হেল্প সেন্টার" },
+    { href: "#docs", en: "Documentation", bn: "ডকুমেন্টেশন" },
+    { href: "#privacy", en: "Privacy Policy", bn: "প্রাইভেসি পলিসি" },
+    { href: "#terms", en: "Terms & Conditions", bn: "শর্তাবলী" },
   ];
 
   return (
-    <footer className="bg-white text-slate-600 border-t border-slate-100">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
-          <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-sm shadow-emerald-600/20 select-none">
-                E
+    // মেইন ফুটার ব্যাকগ্রাউন্ড - আপনার থিমের ডিপ গ্রিন লাক্সারি ভাইব দিতে এখানে 'bg-[#0b241b]' ব্যবহার করা হয়েছে
+    <footer className="relative bg-[#0b241b] dark:bg-[#071711] text-slate-200 pt-16 pb-8 border-t border-emerald-950 overflow-hidden select-none">
+      
+      {/* ================= ডান পাশের ব্যাকগ্রাউন্ড ওয়াটারমার্ক (মস্ক প্লেসহোল্ডার) ================= */}
+      {/* ইমেজ ইম্পোর্ট করার আগ পর্যন্ত এই CSS ওয়াটারমার্কটি ডানপাশে প্রফেশনাল লুক ধরে রাখবে */}
+      <div className="absolute right-0 bottom-0 w-[40%] h-[90%] opacity-10 dark:opacity-5 pointer-events-none z-0 mix-blend-screen hidden md:block">
+        <svg viewBox="0 0 100 100" className="w-full h-full text-gold" fill="currentColor">
+          {/* সিম্পল মসজিদ মিনারের ভেক্টর আর্ট প্লেসহোল্ডার */}
+          <path d="M70 100 V40 Q75 30 80 40 V100 M80 100 V20 Q85 5 90 20 V100 M90 100 V50 Q95 40 100 50 V100" />
+          <path d="M40 100 V60 Q55 35 70 60 V100 Z" />
+        </svg>
+      </div>
+
+      <Container className="relative z-10">
+        {/* ৪টি মেইন কলামের গ্রিড লেআউট */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 pb-12 border-b border-emerald-900/40">
+          
+          {/* ---------------- কলাম ১: লোগো ও সোশাল (lg:col-span-3) ---------------- */}
+          <div className="lg:col-span-3 flex flex-col space-y-4">
+            <Link href="/" className="flex items-center gap-2 group w-fit">
+              <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-sm">
+                <LogoIcon />
               </div>
-              <span className="font-black text-2xl text-slate-900 tracking-tight">
-                EduFilos
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg font-black text-white tracking-tight leading-none font-roboto">
+                  EduFilos
+                </span>
+                <span className="text-[8px] text-emerald-400 font-medium tracking-wide mt-0.5">
+                  {lang === "BN" ? "মাদরাসা ম্যানেজমেন্ট সিস্টেম" : "Madrasha Management System"}
+                </span>
+              </div>
             </Link>
-            <p className="text-sm leading-relaxed text-slate-500 max-w-sm">
-              {lang === "BN"
-                ? "আধুনিক যুগের উপযোগী ইন্টেলিজেন্ট ইআরপি সল্যুশনের মাধ্যমে ইসলামিক শিক্ষাপ্রতিষ্ঠানসমূহকে ক্ষমতায়ন করা। সম্পূর্ণ পেশাদার, নিরাপদ এবং স্কেলযোগ্য।"
-                : "Empowering Islamic educational institutions with intelligent ERP solutions designed for the modern age. Professional, secure, and scalable."}
+            
+            <p className="text-xs text-slate-400 font-medium leading-relaxed max-w-[220px]">
+              {lang === "BN" 
+                ? "প্রযুক্তির আধুনিক ছোঁয়ায় মাদরাসা ব্যবস্থাপনায় আনুন নতুন গতি।" 
+                : "Empowering Madrashas with Technology for a Better Tomorrow."}
             </p>
 
-            <div className="flex items-center gap-3 pt-2">
-              {[
-                { icon: FaFacebookF, href: "#" },
-                { icon: FaTwitter, href: "#" },
-                { icon: FaInstagram, href: "#" },
-                { icon: FaLinkedinIn, href: "#" },
-              ].map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  className="w-9 h-9 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-400 hover:text-slate-600 flex items-center justify-center transition-all border border-slate-100"
-                >
-                  <social.icon className="text-sm" />
-                </a>
-              ))}
+            {/* ছোট স্কয়ার সোশাল বাটন আইকন সমূহ */}
+            <div className="flex items-center gap-2 pt-2">
+              {socials.map((social, idx) => {
+                const Icon = social.icon;
+                return (
+                  <Link 
+                    key={idx} 
+                    href={social.href}
+                    className="w-7 h-7 rounded bg-white/5 border border-white/10 hover:border-gold hover:bg-gold hover:text-[#0b241b] text-slate-300 flex items-center justify-center transition-all duration-200"
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
-          <div>
-            <h4 className="text-slate-900  font-black uppercase  mb-6">
-              {lang === "BN" ? "সহজ নেভিগেশন" : "Quick Navigation"}
+          {/* ---------------- কলাম ২: কুইক লিংকস (lg:col-span-2) ---------------- */}
+          <div className="lg:col-span-2 flex flex-col space-y-4">
+            <h4 className="text-sm font-bold text-white tracking-wider uppercase border-b border-gold/20 pb-1 w-fit">
+              {lang === "BN" ? "কুইক লিংকস" : "Quick Links"}
             </h4>
-            <ul className="space-y-3 text-sm font-medium">
-              {quickNav.map((link, idx) => (
-                <li key={idx} className="flex items-center gap-2 group">
-                  <GoDotFill className="text-[8px] text-slate-200 group-hover:text-emerald-600 transition-colors shrink-0" />
-                  <Link
-                    href={link.href}
-                    className="text-slate-500 hover:text-slate-900 transition-colors"
-                  >
-                    {lang === "BN" ? link.label.BN : link.label.EN}
+            <ul className="flex flex-col space-y-2 text-xs font-medium text-slate-400">
+              {quickLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.href} className="hover:text-gold transition-colors">
+                    {lang === "BN" ? link.bn : link.en}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-slate-900 font-black uppercase  mb-6">
-              {lang === "BN" ? "আমাদের সেবাসমূহ" : "Our Solutions"}
+          {/* ---------------- কলাম ৩: রিসোর্সেস (lg:col-span-2) ---------------- */}
+          <div className="lg:col-span-2 flex flex-col space-y-4">
+            <h4 className="text-sm font-bold text-white tracking-wider uppercase border-b border-gold/20 pb-1 w-fit">
+              {lang === "BN" ? "রিসোর্সসমূহ" : "Resources"}
             </h4>
-            <ul className="space-y-3 text-sm font-medium">
-              {solutions.map((item, idx) => (
-                <li
-                  key={idx}
-                  className="flex items-center gap-2 group text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
-                >
-                  <FiExternalLink className="text-xs text-slate-300 group-hover:text-emerald-600 transition-colors shrink-0" />
-                  <span>{lang === "BN" ? item.BN : item.EN}</span>
+            <ul className="flex flex-col space-y-2 text-xs font-medium text-slate-400">
+              {resources.map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.href} className="hover:text-gold transition-colors">
+                    {lang === "BN" ? link.bn : link.en}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-slate-900  font-black uppercase  mb-6">
-              {lang === "BN" ? "যোগাযোগ ও সাপোর্ট" : "Contact & Support"}
+          {/* ---------------- কলাম ৪: কন্টাক্ট ইনফো (lg:col-span-2.5) ---------------- */}
+          <div className="lg:col-span-2.5 flex flex-col space-y-4">
+            <h4 className="text-sm font-bold text-white tracking-wider uppercase border-b border-gold/20 pb-1 w-fit">
+              {lang === "BN" ? "যোগাযোগ" : "Contact Us"}
             </h4>
-            <div className="space-y-5">
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-emerald-600 shrink-0">
-                  <FiPhone className="text-sm" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-400 leading-none mb-1">
-                    {lang === "BN" ? "কল করুন" : "Call Us"}
-                  </p>
-                  <a
-                    href="tel:+8801700000000"
-                    className="text-sm font-bold text-slate-800 hover:text-emerald-600 transition-colors"
-                  >
-                    +880 1700-000000
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-emerald-600 shrink-0">
-                  <FiMail className="text-sm" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-400 leading-none mb-1">
-                    {lang === "BN" ? "ইমেইল করুন" : "Mail Us"}
-                  </p>
-                  <a
-                    href="mailto:hello@edufilos.com"
-                    className="text-sm font-bold text-slate-800 hover:text-emerald-600 transition-colors"
-                  >
-                    hello@edufilos.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-amber-500 shrink-0">
-                  <FiMapPin className="text-sm" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-400 leading-none mb-1">
-                    {lang === "BN" ? "অফিস ঠিকানা" : "Visit Us"}
-                  </p>
-                  <p className="text-sm font-bold text-slate-800">
-                    {lang === "BN" ? "ঢাকা, বাংলাদেশ" : "Dhaka, Bangladesh"}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <ul className="flex flex-col space-y-3 text-xs font-medium text-slate-400">
+              <li className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-gold shrink-0" />
+                <span>+880 1234-567890</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-gold shrink-0" />
+                <span className="break-all">info@edufilos.com</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Globe className="w-3.5 h-3.5 text-gold shrink-0" />
+                <span>www.edufilos.com</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-gold mt-0.5 shrink-0" />
+                <span className="leading-relaxed">123 Islamic Street, Dhaka, Bangladesh</span>
+              </li>
+            </ul>
           </div>
+
+          {/* ---------------- কলাম ৫: জাজাকাল্লাহু খাইরান ক্যালিগ্রাফি (lg:col-span-2.5) ---------------- */}
+          <div className="lg:col-span-2.5 flex flex-col items-center lg:items-end justify-center text-center lg:text-right mt-6 lg:mt-0 space-y-2">
+            {/* গোল্ডেন অ্যারাবিক ক্যালিগ্রাফি টেক্সট প্লেসহোল্ডার */}
+            <h3 className="text-2xl sm:text-3xl font-arabic text-gold tracking-wide leading-none font-medium">
+              جَزَاكُمُ اللَّهُ خَيْرًا
+            </h3>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-medium italic tracking-wider font-en">
+              "Jazakumullahu Khairan"
+            </p>
+          </div>
+
         </div>
 
-        <div className="border-t border-slate-100 pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-xs font-semibold text-slate-400">
-          <div className="order-3 lg:order-1 text-center lg:text-start">
-            &copy; {currentYear} EduFilos.{" "}
-            {lang === "BN" ? "সর্বস্বত্ব সংরক্ষিত।" : "All rights reserved."}
-          </div>
-
-          <div className="order-1 lg:order-2 flex items-center gap-1.5 text-[10px]  font-black uppercase text-slate-400">
-            <span>
-              {lang === "BN" ? "সার্বিক তত্ত্বাবধানে" : "Provided By"}
-            </span>
-            <Image
-              src={techfilos}
-              alt="TechFilos"
-              className="w-30 h-auto object-contain"
-            />
-          </div>
-
-          <div className="order-2 lg:order-3 flex items-center gap-6 font-black tracking-wider uppercase text-[10px]">
-            <Link
-              href="/privacy"
-              className="hover:text-slate-900 transition-colors"
-            >
-              {lang === "BN" ? "গোপনীয়তা নীতি" : "Privacy Policy"}
-            </Link>
-            <Link
-              href="/terms"
-              className="hover:text-slate-900 transition-colors"
-            >
-              {lang === "BN" ? "ব্যবহারের শর্তাবলী" : "Terms of Service"}
-            </Link>
-          </div>
+        {/* ================= কপিরাইট বটম বার ================= */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[10px] sm:text-xs font-medium text-slate-500 gap-2">
+          <span>
+            © {new Date().getFullYear()} <span className="text-slate-400 font-semibold">EduFilos</span>. All rights reserved.
+          </span>
+          <span className="text-slate-600">
+            {lang === "BN" ? "ডিজাইন ও ডেভেলপমেন্ট টিম EduFilos" : "Designed & Developed by EduFilos Team"}
+          </span>
         </div>
-      </div>
+
+      </Container>
     </footer>
   );
 }
