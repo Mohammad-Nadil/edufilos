@@ -1,193 +1,271 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
-import Button from "../ui/Button";
 import { useLanguage } from "@/context/LanguageContext";
-import Calligraphy from "../ui/Caligraphy";
-import imgCalligraphy from "../../../public/kufikBorder.png";
-import { PLAN_LIST } from "@/temp";
+import Container from "../ui/Container";
+import { Check } from "lucide-react";
+import BackgroundImg from "@/../public/background2.jpg";
+import Image from "next/image";
 
-const Pricing = ({ plans: serverPlans }) => {
+export default function Pricing({ plans: serverPlans }) {
   const { lang } = useLanguage();
 
+  // আপডেট করা PLAN_LIST ব্যবহার করা হয়েছে
   const [plans] = useState(serverPlans || PLAN_LIST);
-  const [loadingPlans] = useState(false);
-  
+
   const getBillingCycleText = (cycle) => {
     const cycleLower = cycle?.toLowerCase();
     if (lang === "BN") {
       return cycleLower === "yearly" || cycleLower === "year" ? "বছর" : "মাস";
     }
-    return cycleLower === "yearly" || cycleLower === "year" ? "year" : "month";
+    return "month"; // image_464e8b.png অনুযায়ী ইংলিশে সবসময় /month ফর্ম্যাট
+  };
+
+  // নাম্বারকে বাংলায় কনভার্ট করার হেল্পার ফাংশন
+  const toEnOrBnNum = (num) => {
+    if (lang !== "BN") return num.toLocaleString("en-US");
+    const bnNums = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
+    return num
+      .toString()
+      .replace(/\d/g, (d) => bnNums[d])
+      .replace(/,/g, ",");
+  };
+
+  // আনলিমিটেড টেক্সট ট্রান্সলেশন হেল্পার
+  const renderLimitText = (key, value) => {
+    if (value === "Unlimited") {
+      return lang === "BN" ? "আনলিমিটেড" : "Unlimited";
+    }
+
+    const formattedNum = toEnOrBnNum(value);
+
+    if (key === "students") {
+      return lang === "BN"
+        ? `${formattedNum} জন ছাত্র`
+        : `${formattedNum} Students`;
+    }
+    if (key === "employees") {
+      return lang === "BN"
+        ? `${formattedNum} জন স্টাফ`
+        : `${formattedNum} Staff/Employees`;
+    }
+    if (key === "storage") {
+      return lang === "BN"
+        ? `${formattedNum} MB স্টোরেজ`
+        : `${formattedNum} MB Storage`;
+    }
+    return value;
   };
 
   return (
     <section
       id="pricing"
-      className="py-16 md:py-24 relative overflow-hidden bg-white"
+      className="py-20  relative overflow-hidden select-none"
     >
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
-          <h2 className="text-xs md:text-sm font-black text-primary uppercasee mb-3 md:mb-4">
-            {lang === "BN" ? "সাশ্রয়ী প্রাইসিং প্ল্যান" : "Flexible Pricing"}
+      {BackgroundImg && (
+              <div className="pointer-events-none absolute inset-0 -z-10 opacity-10   dark:brightness-20 dark:opacity-30  ">
+                <Image
+                  src={BackgroundImg}
+                  alt="Background Texture"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
+            )}
+
+      <Container>
+        <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col space-y-3">
+          <h2 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight">
+            {lang === "BN"
+              ? "আপনার মাদরাসার জন্য সঠিক প্ল্যানটি বেছে নিন"
+              : "Choose the Perfect Plan for Your Madrashas"}
           </h2>
-          <p className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 mb-4 md:mb-6 leading-tight">
+          <p className="text-xs sm:text-sm text-muted-foreground font-medium">
             {lang === "BN"
-              ? "আপনার প্রতিষ্ঠানের জন্য সঠিক প্ল্যানটি বেছে নিন"
-              : "Choose the perfect plan for your institution"}
-          </p>
-          <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
-            {lang === "BN"
-              ? "কোনো গোপন চার্জ নেই। প্রতিটি প্ল্যানেই পাচ্ছেন ২৪/৭ টেকনিক্যাল সাপোর্ট সুবিধা।"
-              : "Transparent pricing with no hidden fees. All plans include 24/7 technical support."}
+              ? "সাশ্রয়ী মূল্য এবং শক্তিশালী সব ফিচার নিয়ে প্রতিটি মাদরাসার জন্য উপযোগী প্যাকেজ।"
+              : "Affordable pricing with powerful features for every madrasha."}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-6 xl:gap-8 max-w-6xl mx-auto items-stretch lg:pt-4">
-          {loadingPlans
-            ? [1, 2, 3].map((i) => (
-                <div 
-                  key={i}
-                  className="h-113 md:h-125 rounded-3xl bg-slate-50 animate-pulse border border-slate-100"
-                />
-              ))
-            : plans.map((plan) => (
-                <div
-                  key={plan.code}
-                  className={`p-6 sm:p-8 rounded-3xl border flex flex-col justify-between relative transition-all bg-white hover:shadow-lg duration-300 ${
-                    plan.code === "STANDARD"
-                      ? "border-primary ring-4 ring-primary/5 shadow-md lg:scale-105 z-10 my-2 lg:my-0"
-                      : "border-slate-200/60 shadow-sm"
-                  }`}
-                >
-                  {plan.code === "STANDARD" && (
-                    <div className="absolute top-0 right-6 sm:right-8 -translate-y-1/2 bg-primary text-white text-[9px] sm:text-[10px] font-black uppercase  px-3 py-1 rounded-full border-4 border-white shadow-sm select-none">
-                      {lang === "BN" ? "জনপ্রিয়" : "Most Popular"}
-                    </div>
-                  )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+          {plans.map((plan) => {
+            const isPremium = plan.code === "PREMIUM";
+            const currentFeatures =
+              lang === "BN" ? plan.features_bn : plan.features;
 
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
-                      {lang === "BN" && plan.name_bn ? plan.name_bn : plan.name}
-                    </h3>
+            return (
+              <div
+                key={plan.code}
+                className={`relative flex flex-col justify-between bg-card text-card-foreground rounded-3xl p-8 transition-all duration-300 shadow-sm hover:shadow-xl ${
+                  isPremium
+                    ? "border-2 border-gold ring-4 ring-gold/5 lg:scale-[1.03] z-10"
+                    : "border border-border-custom"
+                }`}
+              >
+                {isPremium && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gold text-[#0b241b] text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+                    {lang === "BN" ? "সবচেয়ে জনপ্রিয়" : "Most Popular"}
+                  </div>
+                )}
 
-                    <div className="flex items-baseline gap-1 mb-6">
-                      <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                        ৳{plan.price.toLocaleString()}
-                      </span>
-                      <span className="text-slate-400 text-xs sm:text-sm font-medium">
-                        /{getBillingCycleText(plan.billingCycle)}
-                      </span>
-                    </div>
+                <div className="flex flex-col items-center text-center">
+                  <h3 className="text-xl font-bold text-foreground mb-4">
+                    {lang === "BN" ? plan.name_bn : plan.name}
+                  </h3>
 
-                    <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
-                      <div className="flex items-center gap-2.5 py-2 border-b border-slate-100">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 shrink-0" />
-                        <span className="text-xs sm:text-sm font-medium text-slate-600">
-                          {lang === "BN" ? (
-                            <>
-                              সর্বোচ্চ{" "}
-                              {plan.limits?.maxStudents === "Unlimited"
-                                ? "আনলিমিটেড"
-                                : plan.limits?.maxStudents}{" "}
-                              ছাত্র
-                            </>
-                          ) : (
-                            <>
-                              Max {plan.limits?.maxStudents || "Unlimited"}{" "}
-                              Students
-                            </>
-                          )}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2.5 py-2 border-b border-slate-100">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 shrink-0" />
-                        <span className="text-xs sm:text-sm font-medium text-slate-600">
-                          {lang === "BN" ? (
-                            <>
-                              সর্বোচ্চ{" "}
-                              {plan.limits?.maxEmployees === "Unlimited"
-                                ? "আনলিমিটেড"
-                                : plan.limits?.maxEmployees}{" "}
-                              স্টাফ
-                            </>
-                          ) : (
-                            <>
-                              Max {plan.limits?.maxEmployees || "Unlimited"}{" "}
-                              Staff
-                            </>
-                          )}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2.5 py-2 border-b border-slate-100">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 shrink-0" />
-                        <span className="text-xs sm:text-sm font-medium text-slate-600">
-                          {lang === "BN" ? (
-                            <>
-                              {plan.limits?.storageLimit === "Unlimited"
-                                ? "আনলিমিটেড স্টোরেজ"
-                                : `${plan.limits?.storageLimit} মেগাবাইট স্টোরেজ`}
-                            </>
-                          ) : (
-                            <>
-                              {plan.limits?.storageLimit || "Unlimited"}{" "}
-                              {plan.limits?.storageLimit === "Unlimited"
-                                ? ""
-                                : "MB"}{" "}
-                              Storage
-                            </>
-                          )}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2.5 py-2 border-b border-slate-100">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 shrink-0" />
-                        <span className="text-xs sm:text-sm font-medium text-slate-600">
-                          {lang === "BN" ? (
-                            <>
-                              {plan.features?.length || 0}টি প্রিমিয়াম মডিউল
-                              পাবেন
-                            </>
-                          ) : (
-                            <>{plan.features?.length || 0} Premium Modules</>
-                          )}
-                        </span>
-                      </div>
-                    </div>
+                  <div className="flex items-baseline justify-center mb-8">
+                    <span className="text-2xl font-bold text-foreground mr-1">
+                      ৳
+                    </span>
+                    <span className="text-4xl sm:text-5xl font-black tracking-tight text-foreground font-mono">
+                      {toEnOrBnNum(plan.price)}
+                    </span>
+                    <span className="text-xs font-semibold text-muted ml-2">
+                      /{getBillingCycleText(plan.billingCycle)}
+                    </span>
                   </div>
 
+                  <div className="w-full h-[1px] bg-border-custom mb-8" />
+
+                  <ul className="w-full flex flex-col space-y-4 text-left px-2">
+                    <li className="flex items-start gap-3 text-xs sm:text-sm font-medium text-foreground/80">
+                      <Check
+                        className="w-4 h-4 text-emerald-600 dark:text-emerald-500 shrink-0 mt-0.5"
+                        strokeWidth={3}
+                      />
+                      <span>
+                        {lang === "BN" ? "সর্বোচ্চ " : "Max "}
+                        <span className="font-bold text-foreground">
+                          {renderLimitText("students", plan.limits.maxStudents)}
+                        </span>
+                      </span>
+                    </li>
+
+                    <li className="flex items-start gap-3 text-xs sm:text-sm font-medium text-foreground/80">
+                      <Check
+                        className="w-4 h-4 text-emerald-600 dark:text-emerald-500 shrink-0 mt-0.5"
+                        strokeWidth={3}
+                      />
+                      <span>
+                        {lang === "BN" ? "সর্বোচ্চ " : "Max "}
+                        <span className="font-bold text-foreground">
+                          {renderLimitText(
+                            "employees",
+                            plan.limits.maxEmployees,
+                          )}
+                        </span>
+                      </span>
+                    </li>
+
+                    <li className="flex items-start gap-3 text-xs sm:text-sm font-medium text-foreground/80">
+                      <Check
+                        className="w-4 h-4 text-emerald-600 dark:text-emerald-500 shrink-0 mt-0.5"
+                        strokeWidth={3}
+                      />
+                      <span>
+                        <span className="font-bold text-foreground">
+                          {renderLimitText("storage", plan.limits.storageLimit)}
+                        </span>
+                      </span>
+                    </li>
+
+                    {currentFeatures.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-3 text-xs sm:text-sm font-medium text-foreground/80"
+                      >
+                        <Check
+                          className="w-4 h-4 text-emerald-600 dark:text-emerald-500 shrink-0 mt-0.5"
+                          strokeWidth={3}
+                        />
+                        <span className="line-clamp-1">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 pt-2">
                   <Link
                     href={`/checkout?plan=${plan.code}&cycle=${plan.billingCycle.toLowerCase()}`}
-                    className="w-full mt-auto block"
+                    className={`w-full h-12 rounded-2xl font-bold text-sm flex items-center justify-center transition-all shadow-sm active:scale-[0.98] ${
+                      isPremium
+                        ? "bg-gold text-[#0b241b] hover:opacity-90"
+                        : "bg-primary text-primary-foreground hover:opacity-95"
+                    }`}
                   >
-                    <Button
-                      className={`w-full h-11 sm:h-12 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all hover:bg-primary/80! duration-300 hover:text-white ${
-                        plan.code === "STANDARD"
-                          ? "bg-primary text-white hover:opacity-95 shadow-md shadow-primary/10"
-                          : "bg-slate-900 text-white hover:bg-slate-800"
-                      }`}
-                    >
-                      {lang === "BN" ? "প্ল্যানটি বেছে নিন" : "Choose Plan"}
-                    </Button>
+                    {lang === "BN" ? "প্ল্যানটি বেছে নিন" : "Choose Plan"}
                   </Link>
                 </div>
-              ))}
+              </div>
+            );
+          })}
         </div>
-      </div>
-
-      <div className="absolute bottom-[-5%] left-[-8%] md:bottom-auto md:top-6 md:left-[-3%] -translate-x-1/4 w-38 sm:w-60 md:w-95 aspect-square pointer-events-none opacity-[0.05] md:opacity-10 z-0 select-none overflow-hidden rotate-45">
-        <Calligraphy
-          imageSrc={imgCalligraphy.src}
-          textColor="#047857"
-          bgColor="transparent"
-        />
-      </div>
+      </Container>
     </section>
   );
+}
+
+export const PLAN_DETAILS = {
+  STANDARD: {
+    name: "Standard",
+    name_bn: "স্ট্যান্ডার্ড",
+    code: "STANDARD",
+    price: 4900,
+    billingCycle: "monthly",
+    limits: { maxStudents: 500, maxEmployees: 30, storageLimit: 2048 },
+    features: [
+      "Student records logs",
+      "Faculties directory grids",
+      "Basic accounting",
+    ],
+    features_bn: [
+      "শিক্ষার্থী রেকর্ড ও লগ",
+      "শিক্ষক ও স্টাফ ডিরেক্টরি গ্রিড",
+      "বেসিক অ্যাকাউন্টস ও হিসাব",
+    ],
+  },
+  PREMIUM: {
+    name: "Premium",
+    name_bn: "প্রিমিয়াম",
+    code: "PREMIUM",
+    price: 9999,
+    billingCycle: "monthly",
+    limits: { maxStudents: 2000, maxEmployees: 100, storageLimit: 10240 },
+    features: [
+      "Automated SMS pipelines",
+      "Online admissions tracking",
+      "Advanced reporting",
+    ],
+    features_bn: [
+      "স্বয়ংক্রিয় এসএমএস পাইপলাইন",
+      "অনলাইন ভর্তি ট্র্যাকিং সিস্টেম",
+      "অ্যাডভান্সড রিপোর্টিং ড্যাশবোর্ড",
+    ],
+  },
+  ENTERPRISE: {
+    name: "Enterprise",
+    name_bn: "এন্টারপ্রাইজ",
+    code: "ENTERPRISE",
+    price: 14999,
+    billingCycle: "yearly",
+    limits: {
+      maxStudents: "Unlimited",
+      maxEmployees: "Unlimited",
+      storageLimit: "Unlimited",
+    },
+    features: [
+      "Multi-branch sync operations",
+      "Custom institutional subdomains",
+      "Dedicated manager",
+    ],
+    features_bn: [
+      "মাল্টি-ব্রাঞ্চ সিঙ্ক অপারেশন",
+      "কাস্টম প্রাতিষ্ঠানিক সাবডোমেন",
+      "ডেডিকেটেড অ্যাকাউন্ট ম্যানেজার",
+    ],
+  },
 };
 
-export default Pricing;
+export const PLAN_LIST = Object.values(PLAN_DETAILS);

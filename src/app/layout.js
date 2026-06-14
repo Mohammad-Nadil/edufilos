@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
       className={` ${playfair.variable} ${notoBengali.variable} ${amiri.variable} ${roboto.variable} h-full antialiased
       dark `}
     >
-      <body suppressHydrationWarning className=" flex flex-col relative overflow-x-clip">
+      <body suppressHydrationWarning className=" flex flex-col relative overflow-x-clip!">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LanguageProvider>
             <PublicHeader />

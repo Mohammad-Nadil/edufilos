@@ -51,7 +51,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="py-10 xl:py-0 bg-background relative overflow-hidden select-none"
+      className="py-10 xl:py-0  relative overflow-hidden select-none"
     >
       <Container>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-8 lg:gap-12 items-center">
