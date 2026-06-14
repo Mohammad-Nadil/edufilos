@@ -62,10 +62,10 @@ export default function ModulesSection() {
   ];
 
   return (
-    <section id="modules" className="py-16 sm:py-24 bg-background border-t border-border-custom/30">
+    <section id="modules" className="py-10 sm:py-24 bg-background border-t border-border-custom/30">
       <Container>       
-        <div className="flex flex-col items-center text-center space-y-3 mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground max-w-3xl">
+        <div className="flex flex-col items-center text-center space-y-3 mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground ">
             {lang === "BN" ? "আপনার প্রয়োজনীয় সবকিছু, এক জায়গায়" : "Everything You Need, All in One Place"}
           </h2>
           <div className="w-70 h-1 bg-linear-to-r from-transparent via-gold to-transparent rounded-full mt-2" />
@@ -79,7 +79,7 @@ export default function ModulesSection() {
                 key={idx} 
                 className="flex flex-col items-center text-center p-1 sm:p4 md:p-6 bg-card  rounded-2xl shadow-sm hover:shadow-md shadow-gold/60 hover:border-gold/30 hover:scale-[1.02] transition-all duration-300 group"
               >
-                <div className="w-14 h-14 my-4 rounded-full bg-[#0b241b] flex items-center justify-center text-gold shadow-inner border border-gold/10 group-hover:bg-gold group-hover:text-[#0b241b] transition-all duration-300 mb-5 shrink-0">
+                <div className="w-14 h-14 my-4 rounded-full bg-background flex items-center justify-center text-gold shadow-inner border border-gold/10 group-hover:bg-gold group-hover:text-background transition-all duration-300 mb-5 shrink-0">
                   <Icon className="w-6 h-6" strokeWidth={1.8} />
                 </div>
                 

@@ -25,10 +25,10 @@ export default function Banner() {
   return (
     <section
       id="banner"
-      className="relative w-full pt-20 sm:pt-24  2xl:pt-12 flex items-center overflow-hidden bg-background"
+      className="relative w-full pt-20 sm:pt-24  2xl:pt-12 flex items-center overflow-hidden "
     >
       {BannerImg && (
-        <div className="absolute inset-0 z-0 saturate-50 opacity-20 pointer-events-none dark:opacity-10 dark:saturate-0">
+        <div className="absolute inset-0 z-0 saturate-50 opacity-20 pointer-events-none dark:opacity-10 dark:saturate-0 ">
           <Image
             src={BannerImg}
             alt="Banner Texture"
@@ -39,7 +39,7 @@ export default function Banner() {
         </div>
       )}
 
-      <Container className=" px-2! sm:px-4 relative z-10 flex flex-col lg:flex-row gap-4 lg:gap-8 items-center py-4 sm:py-12">
+      <Container className=" px-2 sm:px-4 relative z-10 flex flex-col lg:flex-row gap-4 lg:gap-8 items-center py-4 sm:py-12">
         <div className="lg:w-6/12 flex flex-col justify-center text-left gap-y-2 sm:gap-y-4  mx-auto lg:mx-0">
           <div className="inline-flex items-center gap-2 border border-primary/20 rounded-full px-3 py-1 text-xs font-semibold  w-fit animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
@@ -51,7 +51,8 @@ export default function Banner() {
           <h1 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl 2xl:text-6xl font-black text-foreground leading-[1.2]  font-en">
             {lang === "BN" ? (
               <>
-                আপনার মাদরাসা পরিচালনা করুন,<br /> {" "}
+                আপনার মাদরাসা পরিচালনা করুন,
+                <br />{" "}
                 <span className="italic font-medium text-gold">জ্ঞান</span>{" "}
                 ছড়িয়ে দিন।
               </>
@@ -76,20 +77,20 @@ export default function Banner() {
           </p>
 
           <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center justify-center sm:justify-start sm:gap-4 pt-2 w-full">
-  <Link
-    href="#register"
-    className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-md hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
-  >
-    {lang === "BN" ? "শুরু করুন এখন →" : "Get Started Now →"}
-  </Link>
-  
-  <Link
-    href="#features"
-    className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-card border border-border-custom text-foreground font-bold text-sm shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
-  >
-    {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
-  </Link>
-</div>
+            <Link
+              href="#register"
+              className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-md hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+            >
+              {lang === "BN" ? "শুরু করুন এখন →" : "Get Started Now →"}
+            </Link>
+
+            <Link
+              href="#features"
+              className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-card border border-border-custom text-foreground font-bold text-sm shadow-sm hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+            >
+              {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
+            </Link>
+          </div>
 
           <div className="grid grid-cols-4 gap-2 sm:gap-6 pt-8 border-t border-border-custom/50">
             {miniFeatures.map((feat, idx) => {
@@ -148,7 +149,7 @@ export default function Banner() {
           </div>
 
           <div className="absolute right-[2%] bottom-[5%] w-1/3  sm:w-[25%] aspect-3/6 z-20 drop-shadow-2xl transition-transform duration-500 hover:translate-y-1.25 rounded-2xl sm:rounded-3xl 2xl:rounded-4xl overflow-hidden">
-            <Image 
+            <Image
               src={PhoneImg}
               alt="EduFilos Dashboard mobile View"
               fill

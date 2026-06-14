@@ -32,15 +32,15 @@ export default function PublicHeader() {
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-primary shadow-sm">
-      <div className="w-full h-full rounded-tl-4xl md:rounded-tl-full bg-background border-t-none xl:border-t-2 border-l-none xl:border-l-2 border-gold">
-        <div className="container mx-auto px-2 md:px-6 h-16 flex items-center justify-between">
+    <header className="fixed top-0 w-full z-50 bg-primary shadow-sm">
+      <div className="w-full  rounded-tl-4xl md:rounded-tl-full bg-background border-t-none xl:border-t-2 border-l-none xl:border-l-2 border-gold py-3">
+        <div className="container mx-auto px-2 md:px-6  flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group select-none">
             <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 dark:bg-primary/20 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
               <LogoIcon />
             </div>
-            <div className="flex flex-col">
-              <span className="  text-xl font-black text-foreground leading-none font-roboto ">
+            <div className="flex flex-col ">
+              <span className="  text-xl font-black text-foreground leading-none font-roboto  ">
                 EduFilos
               </span>
               <span className="text-[8px] text-muted font-medium tracking-wide mt-0.5">
