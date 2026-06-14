@@ -25,6 +25,7 @@
 
 @theme {
   --breakpoint-xs: 359px;
+  --breakpoint-3xl:1920px;
 
   --color-background: var(--background);
   --color-card: var(--card-bg);

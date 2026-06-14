@@ -10,6 +10,7 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { GrGroup } from "react-icons/gr";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { RiSchoolLine } from "react-icons/ri";
+import BackgroundImg from "@/../public/texture.jpg";
 
 export default function Features() {
   const { lang } = useLanguage();
@@ -53,6 +54,17 @@ export default function Features() {
       id="features"
       className="py-10 xl:py-0  relative overflow-hidden select-none"
     >
+      {BackgroundImg && (
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-50 dark:brightness-50 dark:opacity-10  ">
+          <Image
+            src={BackgroundImg}
+            alt="Background Texture"
+            fill
+            priority
+            className="object-cover"
+          />
+        </div>
+      )}
       <Container>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="xl:col-span-5 flex flex-col space-y-6">

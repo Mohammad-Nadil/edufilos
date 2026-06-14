@@ -18,8 +18,8 @@ export default function page({ user }) {
       <Features />
        <Pricing language={language} />
     {/*  <Why language={language} />
-      <FAQ language={language} />
-      <TrustAndPayment /> */}
+      <FAQ language={language} /> */}
+      <TrustAndPayment />
     </div>
   );
 }
