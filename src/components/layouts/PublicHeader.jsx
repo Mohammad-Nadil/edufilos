@@ -28,7 +28,7 @@ export default function PublicHeader() {
     { href: "#pricing", en: "Pricing", bn: "প্রাইসিং" },
     { href: "#modules", en: "Modules", bn: "মডিউলস" },
     { href: "#resources", en: "Resources", bn: "রিসোর্স" },
-    { href: "#about", en: "About Us", bn: "আমাদের সম্পর্কে" },
+    { href: "/about", en: "About Us", bn: "আমাদের সম্পর্কে" },
   ];
 
   return (

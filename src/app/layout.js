@@ -9,7 +9,6 @@ import Footer from "@/components/layouts/Footer";
 import PublicHeader from "@/components/layouts/PublicHeader";
 import { LanguageProvider } from "../context/LanguageContext";
 import { ThemeProvider } from "next-themes";
-import Lantern from "@/components/ui/Lantern";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -56,7 +55,6 @@ export default function RootLayout({ children }) {
             <PublicHeader />
             <main className="flex-1  ">{children}</main>
             <Footer />
-            <Lantern />
           </LanguageProvider>
         </ThemeProvider>
       </body>

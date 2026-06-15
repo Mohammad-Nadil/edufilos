@@ -11,7 +11,6 @@ import Image from "next/image";
 export default function Pricing({ plans: serverPlans }) {
   const { lang } = useLanguage();
 
-  // আপডেট করা PLAN_LIST ব্যবহার করা হয়েছে
   const [plans] = useState(serverPlans || PLAN_LIST);
 
   const getBillingCycleText = (cycle) => {
@@ -19,10 +18,9 @@ export default function Pricing({ plans: serverPlans }) {
     if (lang === "BN") {
       return cycleLower === "yearly" || cycleLower === "year" ? "বছর" : "মাস";
     }
-    return "month"; // image_464e8b.png অনুযায়ী ইংলিশে সবসময় /month ফর্ম্যাট
+    return "month"; 
   };
 
-  // নাম্বারকে বাংলায় কনভার্ট করার হেল্পার ফাংশন
   const toEnOrBnNum = (num) => {
     if (lang !== "BN") return num.toLocaleString("en-US");
     const bnNums = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
@@ -32,7 +30,6 @@ export default function Pricing({ plans: serverPlans }) {
       .replace(/,/g, ",");
   };
 
-  // আনলিমিটেড টেক্সট ট্রান্সলেশন হেল্পার
   const renderLimitText = (key, value) => {
     if (value === "Unlimited") {
       return lang === "BN" ? "আনলিমিটেড" : "Unlimited";
