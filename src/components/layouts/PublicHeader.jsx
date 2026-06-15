@@ -86,7 +86,7 @@ export default function PublicHeader() {
             <LanguageToggle />
 
             <Link
-              href="#demo"
+              href="/demo"
               className="hidden sm:inline-flex h-9 px-4 rounded-xl bg-primary text-primary-foreground text-xs font-bold items-center justify-center shadow-sm hover:opacity-90 active:scale-95 transition-all select-none"
             >
               {lang === "BN" ? "ডেমো বুক করুন →" : "Book a Demo →"}
@@ -118,7 +118,7 @@ export default function PublicHeader() {
                 </Link>
               ))}
               <Link
-                href="#demo"
+                href="/demo"
                 onClick={() => setIsOpen(false)}
                 className="mt-2 w-full h-11 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center text-sm shadow-sm"
               >
