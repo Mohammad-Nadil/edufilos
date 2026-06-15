@@ -10,6 +10,7 @@ import {
   Eye,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Container from "../ui/Container";
 
 const journeySteps = [
   {
@@ -26,8 +27,8 @@ const journeySteps = [
     year: "2025",
     title: { BN: "প্ল্যাটফর্ম ডেভেলপমেন্ট", EN: "Platform Development" },
     description: {
-      BN: "প্রশাসনিক কাজ সহজ করতে এবং শিক্ষকদের ক্ষমতায়িত করতে আমরা EduFilos তৈরি করি।",
-      EN: "We built EduFilos with a vision to simplify administration and empower educators.",
+      BN: "প্রশাসনিক কাজ সহজ করতে ও শিক্ষকদের ক্ষমতায়িত করতে আমরা EduFilos তৈরি করি।",
+      EN: "We built EduFilos to simplify administration and empower teachers.",
     },
   },
   {
@@ -45,7 +46,7 @@ const journeySteps = [
   {
     icon: TrendingUp,
     year: "2026",
-    title: { BN: "হাজার হাজার ব্যবহারকারীর সেবা", EN: "Serving Thousands" },
+    title: { BN: "হাজার ব্যবহারকারীর সেবা", EN: "Serving Thousands" },
     description: {
       BN: "আজ আমরা গর্বের সাথে শত শত মাদ্রাসা এবং হাজার হাজার ব্যবহারকারীকে সেবা দিচ্ছি।",
       EN: "Today, we proudly serve hundreds of madrashas and thousands of users.",
@@ -75,12 +76,15 @@ export default function OurJourney() {
   const { lang } = useLanguage();
 
   return (
-    <section className="bg-background py-16 px-4 sm:px-6">
-      <div className="mx-auto max-w-6xl">
+    <section className="bg-background py-16">
+      <Container>
         {/* Heading */}
-        <h2 className="text-center font-serif text-3xl sm:text-4xl font-bold text-foreground mb-12">
-          {content.heading[lang]}
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground">
+            {content.heading[lang]}
+          </h2>
+          <div className="w-40 h-1 bg-linear-to-r from-transparent via-gold to-transparent rounded-full mt-2 mx-auto" />
+        </div>
 
         {/* Timeline */}
         <div className="relative mb-16">
@@ -185,7 +189,7 @@ export default function OurJourney() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import OurJourney from '@/components/about/OurJourney'
+import WhyEduFilosExists from '@/components/about/WhyEduFilosExists'
 import AboutBanner from '@/components/layouts/AboutBanner'
 import React from 'react'
 
@@ -7,6 +8,7 @@ const page = () => {
     <div>
       <AboutBanner />
       <OurJourney/>
+      <WhyEduFilosExists/>
     </div>
   )
 }
