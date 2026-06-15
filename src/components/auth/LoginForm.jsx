@@ -8,7 +8,7 @@ import { Mail, Lock } from "lucide-react";
 
 export default function LoginForm() {
   const { lang } = useLanguage();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -25,18 +25,6 @@ export default function LoginForm() {
       placeholder: {
         BN: "ইমেইল লিখুন",
         EN: "Enter email",
-      },
-    },
-    {
-      name: "password",
-      icon: Lock,
-      label: {
-        BN: "পাসওয়ার্ড",
-        EN: "Password",
-      },
-      placeholder: {
-        BN: "পাসওয়ার্ড লিখুন",
-        EN: "Enter password",
       },
     },
   ];
@@ -64,6 +52,17 @@ export default function LoginForm() {
           />
         );
       })}
+      <FormInput
+        name="password"
+        icon={Lock}
+        type={showPassword ? "text" : "password"}
+        value={form.password}
+        onChange={handleChange}
+        label={lang === "BN" ? "পাসওয়ার্ড" : "Password"}
+        placeholder={lang === "BN" ? "পাসওয়ার্ড দিন" : "Create password"}
+        showPassword={showPassword}
+        onTogglePassword={() => setShowPassword(!showPassword)}
+      />
 
       <Button className="w-full h-14 rounded-2xl">
         {lang === "BN" ? "লগইন করুন" : "Login"}

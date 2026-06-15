@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import FormInput from "./FormInput";
 import Button from "@/components/ui/Button";
-import { User, Mail, Phone, Building2, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
+import { inputs } from "@/helper/register";
 
 export default function RegisterForm() {
   const { lang } = useLanguage();
@@ -18,80 +19,8 @@ export default function RegisterForm() {
     confirmPassword: "",
   });
 
-  const inputs = [
-    {
-      name: "fullName",
-      icon: User,
-      label: {
-        BN: "পূর্ণ নাম",
-        EN: "Full Name",
-      },
-      placeholder: {
-        BN: "আপনার নাম লিখুন",
-        EN: "Enter your full name",
-      },
-    },
-    {
-      name: "email",
-      icon: Mail,
-      label: {
-        BN: "ইমেইল",
-        EN: "Email",
-      },
-      placeholder: {
-        BN: "ইমেইল লিখুন",
-        EN: "Enter email",
-      },
-    },
-    {
-      name: "phone",
-      icon: Phone,
-      label: {
-        BN: "ফোন নাম্বার",
-        EN: "Phone Number",
-      },
-      placeholder: {
-        BN: "ফোন নাম্বার লিখুন",
-        EN: "Enter phone number",
-      },
-    },
-    {
-      name: "madrasha",
-      icon: Building2,
-      label: {
-        BN: "মাদ্রাসার নাম",
-        EN: "Madrasha Name",
-      },
-      placeholder: {
-        BN: "মাদ্রাসার নাম লিখুন",
-        EN: "Enter madrasha name",
-      },
-    },
-    {
-      name: "password",
-      icon: Lock,
-      label: {
-        BN: "পাসওয়ার্ড",
-        EN: "Password",
-      },
-      placeholder: {
-        BN: "পাসওয়ার্ড দিন",
-        EN: "Create password",
-      },
-    },
-    {
-      name: "confirmPassword",
-      icon: Lock,
-      label: {
-        BN: "পাসওয়ার্ড নিশ্চিত করুন",
-        EN: "Confirm Password",
-      },
-      placeholder: {
-        BN: "পাসওয়ার্ড আবার লিখুন",
-        EN: "Confirm password",
-      },
-    },
-  ];
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -99,6 +28,8 @@ export default function RegisterForm() {
 
   return (
     <form className="space-y-5">
+
+      {/* NORMAL INPUTS (UNCHANGED) */}
       {inputs.map((item, index) => {
         const Icon = item.icon;
 
@@ -117,6 +48,43 @@ export default function RegisterForm() {
         );
       })}
 
+      {/* PASSWORD INPUT (ONLY ADD) */}
+      <FormInput
+        name="password"
+        icon={Lock}
+        type={showPassword ? "text" : "password"}
+        value={form.password}
+        onChange={handleChange}
+        label={lang === "BN" ? "পাসওয়ার্ড" : "Password"}
+        placeholder={lang === "BN" ? "পাসওয়ার্ড দিন" : "Create password"}
+        showPassword={showPassword}
+        onTogglePassword={() => setShowPassword(!showPassword)}
+      />
+
+      {/* CONFIRM PASSWORD INPUT (ONLY ADD) */}
+      <FormInput
+        name="confirmPassword"
+        icon={Lock}
+        type={showConfirmPassword ? "text" : "password"}
+        value={form.confirmPassword}
+        onChange={handleChange}
+        label={
+          lang === "BN"
+            ? "পাসওয়ার্ড নিশ্চিত করুন"
+            : "Confirm Password"
+        }
+        placeholder={
+          lang === "BN"
+            ? "পাসওয়ার্ড আবার লিখুন"
+            : "Confirm password"
+        }
+        showPassword={showConfirmPassword}
+        onTogglePassword={() =>
+          setShowConfirmPassword(!showConfirmPassword)
+        }
+      />
+
+      {/* BUTTON (UNCHANGED) */}
       <Button className="w-full h-14 rounded-2xl">
         {lang === "BN" ? "রেজিস্টার করুন" : "Create Account"}
       </Button>
