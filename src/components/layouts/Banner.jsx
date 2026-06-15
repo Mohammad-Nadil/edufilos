@@ -78,7 +78,7 @@ export default function Banner() {
 
           <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center justify-center sm:justify-start sm:gap-4 pt-2 w-full">
             <Link
-              href="#register"
+              href="/register"
               className="h-12 px-3 sm:px-6 w-full sm:w-auto rounded-xl bg-primary text-primary-foreground font-bold text-sm shadow-md hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
             >
               {lang === "BN" ? "শুরু করুন এখন →" : "Get Started Now →"}
