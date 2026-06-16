@@ -12,9 +12,7 @@ export default function BillingToggle({
         <button
           onClick={() => setBilling("monthly")}
           className={`px-7 py-2 rounded-full text-sm font-semibold ${
-            billing === "monthly"
-              ? "bg-primary text-white"
-              : ""
+            billing === "monthly" ? "bg-primary text-white" : ""
           }`}
         >
           {monthly}
@@ -23,9 +21,7 @@ export default function BillingToggle({
         <button
           onClick={() => setBilling("yearly")}
           className={`px-7 py-2 rounded-full text-sm font-semibold ${
-            billing === "yearly"
-              ? "bg-primary text-white"
-              : ""
+            billing === "yearly" ? "bg-primary text-white" : ""
           }`}
         >
           {yearly}

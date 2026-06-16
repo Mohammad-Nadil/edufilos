@@ -1,7 +1,7 @@
 import React from "react";
 
 export const metadata = {
-  title: "Modules | EduFilos - All the Tools You Need to Run Your Madrasha",
+  title: "Modules | EduFilos",
   description:
     "Explore EduFilos's powerful modules designed to simplify your daily madrasha operations. Discover everything your madrasha needs, all under one platform.",
 };

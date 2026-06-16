@@ -41,7 +41,7 @@ export default function PricingCard({
       {isPremium && (
         <div className="absolute left-1/2 -translate-x-1/2 -top-5 z-20">
           <div className="flex gap-1 bg-gold text-white px-6 py-2 rounded-full text-xs font-bold tracking-wide shadow-lg">
-            <IoStar className="text-amber-300"/>
+            <IoStar className="text-amber-300" />
             {popularText}
           </div>
         </div>

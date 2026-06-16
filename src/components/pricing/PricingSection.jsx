@@ -9,6 +9,7 @@ import PricingCard from "./PricingCard";
 import { useLanguage } from "@/context/LanguageContext";
 import { pricingContent } from "@/helper/pricing/pricingContent";
 import { PLAN_LIST } from "@/helper/pricing/plans";
+import SectionHeader from "../common/SectionHeader";
 
 export default function PricingSection() {
   const { lang } = useLanguage();
@@ -41,14 +42,11 @@ export default function PricingSection() {
       <Container>
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-14">
-          <span className="inline-block text-[11px] uppercase tracking-[0.28em] font-bold text-gold">
-            {content.badge}
-          </span>
-
-          <h2 className="mt-4 text-4xl md:text-5xl xl:text-6xl font-black leading-tight text-foreground">
-            {content.title}
-          </h2>
-
+          <SectionHeader
+            label="Pricing Plan"
+            text="Everything You Need to Manage Your Madrasha"
+            colorWord="Manage Your Madrasha"
+          />
           <p className="mt-5 text-sm md:text-base text-muted-foreground font-medium max-w-3xl mx-auto">
             {content.subtitle}
           </p>
