@@ -17,7 +17,6 @@ export default function RegisterSection() {
       <main className="min-h-screen bg-background pt-32 pb-20">
         <Container>
           <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* LEFT SIDE (UNCHANGED DESIGN) */}
             <div className="max-w-xl">
               <span className="inline-flex items-center rounded-full border border-gold/20 bg-gold/5 px-4 py-1.5 text-xs font-medium text-gold mb-6">
                 {lang === "BN"
@@ -42,8 +41,6 @@ export default function RegisterSection() {
 
               <FeatureList />
             </div>
-
-            {/* RIGHT SIDE (FORM UNCHANGED STRUCTURE) */}
             <div className="bg-card border border-border-custom rounded-[32px] shadow-sm p-6 md:p-10">
               <div className="text-center mb-10">
                 <h2 className="text-3xl font-bold text-foreground">

@@ -32,7 +32,7 @@ export default function PublicHeader() {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-primary shadow-sm">
+    <header className="sticky top-0 w-full z-50 bg-primary shadow-sm">
       <div className="w-full  rounded-tl-4xl md:rounded-tl-full bg-background border-t-none xl:border-t-2 border-l-none xl:border-l-2 border-gold py-3">
         <div className="container mx-auto px-2 md:px-6  flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group select-none">
