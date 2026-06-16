@@ -13,11 +13,9 @@ import SectionHeader from "../common/SectionHeader";
 
 export default function PricingSection() {
   const { lang } = useLanguage();
-
   const content = lang === "BN" ? pricingContent.BN : pricingContent.EN;
-
+  const t = content;
   const [billing, setBilling] = useState("monthly");
-
   const getPrice = (plan) => {
     if (billing === "yearly") {
       return Math.round(plan.price * 12 * 0.8);
@@ -43,9 +41,9 @@ export default function PricingSection() {
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-14">
           <SectionHeader
-            label="Pricing Plan"
-            text="Everything You Need to Manage Your Madrasha"
-            colorWord="Manage Your Madrasha"
+            label={t.label}
+            text={t.text}
+            colorWord={t.colorWord}
           />
           <p className="mt-5 text-sm md:text-base text-muted-foreground font-medium max-w-3xl mx-auto">
             {content.subtitle}

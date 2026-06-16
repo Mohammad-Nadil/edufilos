@@ -1,7 +1,8 @@
 export const pricingContent = {
   EN: {
-    badge: "PRICING PLANS",
-    title: "Simple, Transparent & Affordable Pricing for Every Madrasha",
+    label: "Pricing Plan",
+    text: "Everything You Need to Manage Your Madrasha",
+    colorWord: "Manage Your Madrasha",
     subtitle:
       "Choose the perfect plan for your institution and unlock the full power of EduFilos Madrasha Management System.",
     monthly: "Monthly",
@@ -11,8 +12,9 @@ export const pricingContent = {
   },
 
   BN: {
-    badge: "প্রাইসিং প্ল্যান",
-    title: "প্রতিটি মাদরাসার জন্য স্বচ্ছ ও সাশ্রয়ী মূল্য",
+    label: "প্রাইসিং প্ল্যান",
+    text: "আপনার মাদ্রাসা পরিচালনার জন্য সবকিছু",
+    colorWord: "পরিচালনার জন্য",
     subtitle:
       "আপনার প্রতিষ্ঠানের জন্য উপযুক্ত প্যাকেজ নির্বাচন করুন।",
     monthly: "মাসিক",
