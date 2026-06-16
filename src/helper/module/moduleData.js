@@ -35,7 +35,7 @@ export const moduleData = {
         id: 1,
         title: "Student Management",
         description:
-          "Manage student admissions, profiles, academic records, and progress in one secure system.",
+          "Manage student admissions, profiles, academic records, and overall academic progress in one secure and centralized system. This module helps you efficiently handle student information from enrollment to ongoing performance tracking, ensuring all records are properly organized, easily accessible, and always up to date.",
         icon: FaUsers,
         iconColor: iconColors[0],
         featured: true,
@@ -100,7 +100,7 @@ export const moduleData = {
         id: 9,
         title: "Library Management",
         description:
-          "Manage books, borrowing history, inventory, and library operations efficiently.",
+          "Manage your entire library system with ease and efficiency. This module allows you to organize and maintain a complete record of all books, including their availability, categories, and detailed inventory status. You can effortlessly track borrowing and return activities, ensuring that every transaction is properly recorded and fully transparent.",
         icon: FaBook,
         iconColor: iconColors[8],
       },
@@ -124,7 +124,7 @@ export const moduleData = {
         id: 1,
         title: "শিক্ষার্থী ব্যবস্থাপনা",
         description:
-          "শিক্ষার্থীর ভর্তি, প্রোফাইল, একাডেমিক রেকর্ড এবং অগ্রগতি পরিচালনা করুন।",
+          "শিক্ষার্থীদের ভর্তি কার্যক্রম, প্রোফাইল, একাডেমিক রেকর্ড এবং সামগ্রিক অগ্রগতি একটি নিরাপদ ও কেন্দ্রীয় সিস্টেমে পরিচালনা করুন। এই মডিউলের মাধ্যমে আপনি শিক্ষার্থীদের সমস্ত তথ্য সহজে নিয়ন্ত্রণ ও আপডেট করতে পারবেন, ভর্তি থেকে শুরু করে তাদের পারফরম্যান্স ট্র্যাক করা পর্যন্ত প্রতিটি ধাপ সুশৃঙ্খলভাবে সংরক্ষিত থাকবে এবং সবসময় হালনাগাদ অবস্থায় থাকবে।",
         icon: FaUsers,
         iconColor: iconColors[0],
         featured: true,
@@ -187,7 +187,7 @@ export const moduleData = {
         id: 9,
         title: "লাইব্রেরি ব্যবস্থাপনা",
         description:
-          "বই, ধার নেওয়ার ইতিহাস এবং লাইব্রেরি ইনভেন্টরি পরিচালনা করুন।",
+          "আপনার সম্পূর্ণ লাইব্রেরি সিস্টেমকে সহজ ও কার্যকরভাবে পরিচালনা করুন। এই মডিউলের মাধ্যমে আপনি বইগুলোর একটি পূর্ণাঙ্গ রেকর্ড সংগঠিত ও সংরক্ষণ করতে পারবেন, যেখানে প্রতিটি বইয়ের প্রাপ্যতা, ক্যাটাগরি এবং ইনভেন্টরির বিস্তারিত তথ্য অন্তর্ভুক্ত থাকবে। এছাড়াও আপনি সহজেই বই ধার নেওয়া ও ফেরত দেওয়ার কার্যক্রম ট্র্যাক করতে পারবেন, যাতে প্রতিটি লেনদেন সঠিকভাবে রেকর্ড হয় এবং সম্পূর্ণ স্বচ্ছতা বজায় থাকে।",
         icon: FaBook,
         iconColor: iconColors[8],
       },

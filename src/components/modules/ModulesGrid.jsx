@@ -10,6 +10,7 @@ export default function ModulesGrid({ modules }) {
         {...modules[0]}
         Icon={modules[0].icon}
         className="lg:row-span-2 min-h-[496px]"
+        showImage
       />
 
       {/* Academic Management */}
