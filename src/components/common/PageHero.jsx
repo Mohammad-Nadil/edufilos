@@ -46,9 +46,8 @@ export default function PageHero({ badge, title, description, videoUrl }) {
   return (
     <section
       id="banner"
-      className="relative w-full pt-24 pb-16 lg:py-32 flex items-center overflow-hidden bg-[#faf8f5] dark:bg-background"
+      className="relative w-full pt-12 pb-16 lg:py-24 xl:py-32 flex items-center overflow-hidden bg-[#faf8f5] dark:bg-background"
     >
-      {/* Background */}
       <div className="absolute inset-0 z-0 opacity-15 dark:opacity-5 pointer-events-none mix-blend-multiply dark:mix-blend-normal">
         <Image
           src={BannerImg}
@@ -59,16 +58,15 @@ export default function PageHero({ badge, title, description, videoUrl }) {
         />
       </div>
 
-      <Container className="px-4 relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-6 items-center">
-        {/* LEFT */}
+      <Container className="px-4 relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-8 items-center w-full">
+        
         <div className="w-full lg:w-6/12 flex flex-col text-center lg:text-left items-center lg:items-start gap-y-5">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 border border-primary/50 rounded-full px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-primary/80">
+          
+          <div className="inline-flex items-center gap-2 border border-primary/40 rounded-full px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-primary/90 bg-primary/5">
             ✦ {lang === "BN" ? badge.bn : badge.en}
           </div>
 
-          {/* Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 dark:text-foreground leading-tight tracking-tight max-w-xl">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-neutral-900 dark:text-foreground leading-tight tracking-tight max-w-xl">
             {lang === "BN" ? (
               <>
                 {title.bn.first}{" "}
@@ -83,26 +81,24 @@ export default function PageHero({ badge, title, description, videoUrl }) {
             )}
           </h1>
 
-          {/* Description */}
-          <p className="text-sm sm:text-base font-medium max-w-md leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base font-medium max-w-md text-neutral-600 dark:text-neutral-300 leading-relaxed">
             {lang === "BN" ? description.bn : description.en}
           </p>
 
-          {/* Stats */}
-          <div className="grid grid-cols-4 gap-4 sm:gap-6 py-6 my-2 border-t border-b border-neutral-200/60 dark:border-border-custom/50 w-full max-w-xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-6 my-2 border-t border-b border-neutral-200/60 dark:border-border-custom/50 w-full max-w-xl">
             {statsFeatures.map((feat, idx) => {
               const Icon = feat.icon;
 
               return (
                 <div
                   key={idx}
-                  className="flex flex-col items-center lg:items-start text-center lg:text-left"
+                  className="flex flex-col items-center lg:items-start text-center lg:text-left w-full"
                 >
-                  <div className="text-2xl xl:text-3xl w-10 xl:w-14 aspect-square rounded-full bg-amber-500/5 dark:bg-amber-500/10 flex items-center justify-center text-gold mb-2 border border-amber-500/10 shadow-2xs">
+                  <div className="text-xl xl:text-2xl w-10 xl:w-12 aspect-square rounded-full bg-amber-500/5 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-500 mb-2 border border-amber-500/10">
                     <Icon />
                   </div>
 
-                  <span className="sm:text-lg md:text-xl font-black text-primary leading-none">
+                  <span className="text-lg md:text-xl font-black text-primary leading-none">
                     {feat.num}
                   </span>
 
@@ -114,57 +110,54 @@ export default function PageHero({ badge, title, description, videoUrl }) {
             })}
           </div>
 
-          {/* Buttons */}
-          <div className="flex flex-row items-center gap-4 w-full justify-center lg:justify-start pt-2">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full justify-center lg:justify-start pt-2">
             <Link
               href="/demo"
-              className="h-12 px-6 rounded-xl bg-primary text-white font-bold text-sm shadow-md hover:shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="h-12 w-full sm:w-auto px-6 rounded-xl bg-primary text-white font-bold text-sm shadow-xs hover:brightness-105 transition-all flex items-center justify-center"
             >
               {lang === "BN" ? "বুক এ ডেমো →" : "Book a Demo →"}
             </Link>
 
             <Link
               href="#features"
-              className="h-12 px-6 rounded-xl bg-white dark:bg-card border border-neutral-200 dark:border-border-custom text-neutral-800 dark:text-foreground font-bold text-sm shadow-2xs hover:bg-neutral-50 transition-all flex items-center justify-center gap-2"
+              className="h-12 w-full sm:w-auto px-6 rounded-xl bg-white dark:bg-card border border-neutral-200 dark:border-border-custom text-neutral-800 dark:text-foreground font-bold text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all flex items-center justify-center"
             >
               {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
             </Link>
           </div>
         </div>
 
-        {/* RIGHT */}
-        <div className="w-full lg:w-6/12 flex flex-col items-center justify-center relative mt-8 lg:mt-0 min-h-100 sm:min-h-125">
-          {/* Quran Quote */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 translate-y-1/3 text-center w-full">
-            <h3 className="text-3xl md:text-4xl font-ar text-amber-700/90 dark:text-gold tracking-wide mb-2 font-medium">
+        <div className="w-full lg:w-6/12 flex flex-col items-center justify-center relative mt-6 lg:mt-0 min-h-[320px] sm:min-h-[450px]">
+          
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 text-center w-full z-0">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-ar text-amber-700/90 dark:text-amber-500/80 tracking-wide mb-1 font-medium">
               اِقْرَأْ وَرَبُّكَ الْأَكْرَمُ
             </h3>
 
-            <p className="text-[10px] sm:text-xs text-muted italic font-medium leading-relaxed">
+            <p className="text-[10px] sm:text-xs text-neutral-500 dark:text-neutral-400 italic font-medium leading-relaxed">
               {lang === "BN"
                 ? "“পাঠ করুন, আপনার পালনকর্তা মহা দয়ালু।”"
                 : '"Read! And your Lord is the Most Generous."'}
-
               <span className="block text-[9px] mt-0.5 opacity-70">
                 — Quran 96:3
               </span>
             </p>
           </div>
 
-          {/* Mac */}
-          <div className="relative w-full flex items-center justify-center z-10 mt-24 sm:mt-28">
-            <div className="relative w-full sm:w-[85%] aspect-5/3 z-10 rounded-xl sm:rounded-3xl overflow-hidden">
+          <div className="relative w-full flex items-center justify-center z-10 mt-20 sm:mt-24">
+            
+            <div className="relative w-full sm:w-[85%] aspect-5/3 z-10 rounded-xl overflow-hidden">
               <Image
                 src={MacImg}
                 alt="Desktop View"
                 fill
                 priority
-                className="absolute w-full h-full z-20"
+                className="absolute w-full h-full z-20 pointer-events-none"
               />
 
-              <div className="object-cover w-full h-full z-10">
+              <div className="w-full h-full rounded-xl z-10">
                 <iframe
-                  className="w-full h-full"
+                  className="w-full h-full bg-neutral-900"
                   src={videoUrl}
                   title="YouTube video player"
                   frameBorder="0"
@@ -174,22 +167,21 @@ export default function PageHero({ badge, title, description, videoUrl }) {
               </div>
             </div>
 
-            {/* Phone */}
-            <div className="absolute -right-2 sm:right-[2%] -bottom-8 w-[28%] sm:w-[24%] aspect-3/6 drop-shadow-2xl z-20">
+            <div className="absolute -right-2 sm:right-[2%] -bottom-6 w-[26%] sm:w-[22%] aspect-3/6 drop-shadow-xl z-20">
               <Image
                 src={PhoneImg}
                 fill
-                alt="phone"
-                className="relative z-20"
+                alt="phone frame"
+                className="relative z-20 pointer-events-none"
               />
-
               <Image
                 src={Placeholder}
                 fill
-                alt="placeholder"
-                className="object-cover absolute inset-0 z-10 rounded-4xl"
+                alt="phone screen wallpaper"
+                className="object-cover absolute inset-0 z-10 rounded-[10%] p-[4%]"
               />
             </div>
+
           </div>
         </div>
       </Container>
