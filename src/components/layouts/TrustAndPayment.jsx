@@ -50,11 +50,11 @@ export default function TrustAndPayment() {
   ];
 
   return (
-    <section className="py-16 bg-background border-t border-border-custom select-none">
+    <section className="py-16 bg-background select-none">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-20">
-          <div className="flex flex-col sm:flex-row items-center gap-6 bg-card text-card-foreground p-6 rounded-2xl border border-border-custom shadow-sm h-full">
-            <div className="flex-1 text-center sm:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-8 items-stretch mb-20">
+          <div className="flex flex-row items-center gap-6 bg-card text-card-foreground p-4 sm:p-6 rounded-2xl border border-border-custom shadow-sm h-full">
+            <div className="flex-1 text-left">
               <h3 className="text-lg font-bold text-foreground mb-2">
                 {lang === "BN" ? "মোবাইল অ্যাপ অ্যাক্সেস" : "Mobile App Access"}
               </h3>
@@ -64,10 +64,10 @@ export default function TrustAndPayment() {
                   : "Manage your madrasha on the go with our mobile app."}
               </p>
 
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-2.5">
                 <a
                   href="#"
-                  className="bg-neutral-900 hover:bg-black text-white px-3 py-1.5 rounded-xl flex items-center gap-2 border border-neutral-800 transition-colors shadow-xs group/btn"
+                  className="bg-neutral-900 hover:bg-black text-white px-3 py-1.5 rounded  sm:rounded-xl flex items-center gap-2 border border-neutral-800 transition-colors shadow-xs group/btn"
                 >
                   <FaGooglePlay className="w-4 h-4 text-neutral-300 group-hover/btn:text-white transition-colors" />
                   <div className="text-left">
@@ -82,7 +82,7 @@ export default function TrustAndPayment() {
 
                 <a
                   href="#"
-                  className="bg-neutral-900 hover:bg-black text-white px-3 py-1.5 rounded-xl flex items-center gap-2 border border-neutral-800 transition-colors shadow-xs group/btn"
+                  className="bg-neutral-900 hover:bg-black text-white px-3 py-1.5 rounded  sm:rounded-xl flex items-center gap-2 border border-neutral-800 transition-colors shadow-xs group/btn"
                 >
                   <FaApple className="w-4 h-4 text-neutral-300 group-hover/btn:text-white transition-colors" />
                   <div className="text-left">
@@ -96,19 +96,19 @@ export default function TrustAndPayment() {
                 </a>
               </div>
             </div>
-            <div className="relative w-1/6 aspect-1/2">
-              <Image src={phoneImg} fill alt="ssl" className="relative z-20" />
+            <div className="relative w-1/7 sm:w-1/6 aspect-1/2">
+              <Image src={phoneImg} fill alt="phone" className="relative z-20" />
               <Image
                 src={placeholder}
                 fill
                 alt="placeholder"
-                className="object-cover absolute inset-0 z-10 rounded-2xl"
+                className="object-cover absolute inset-0 z-10 rounded  sm:rounded-xl md:rounded-2xl"
               />
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-6 bg-card text-card-foreground p-6 rounded-2xl border border-border-custom shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full">
-            <div className="flex-1 text-center sm:text-left">
+          <div className="flex flex-row items-center gap-6 bg-card text-card-foreground p-4 sm:p-6 rounded-2xl border border-border-custom shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full">
+            <div className="flex-1 text-left">
               <h3 className="text-lg font-bold text-foreground mb-2 tracking-tight">
                 {lang === "BN" ? "নিরাপদ ও নির্ভরযোগ্য" : "Secure & Trusted"}
               </h3>
@@ -118,7 +118,7 @@ export default function TrustAndPayment() {
                   : "Your data is safe with us. We use top-level security and regular backups."}
               </p>
             </div>
-            <div className="w-20 h-20 shrink-0 rounded-2xl bg-linear-to-br from-amber-500/10 to-transparent dark:from-amber-500/5 border border-amber-500/20 flex items-center justify-center shadow-inner relative group">
+            <div className=" w-16 sm:w-20 aspect-square shrink-0 rounded-2xl bg-linear-to-br from-amber-500/10 to-transparent dark:from-amber-500/5 border border-amber-500/20 flex items-center justify-center shadow-inner relative group">
               <div className="absolute inset-0 rounded-2xl bg-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md" />
               <ShieldCheck
                 className="w-10 h-10 text-amber-500 motion-safe:animate-[pulse_3s_ease-in-out_infinite]"
@@ -127,8 +127,8 @@ export default function TrustAndPayment() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-6 bg-card text-card-foreground p-6 rounded-2xl border border-border-custom shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full">
-            <div className="flex-1 text-center sm:text-left">
+          <div className="flex flex-row items-center gap-6 bg-card text-card-foreground p-4 sm:p-6 rounded-2xl border border-border-custom shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full">
+            <div className="flex-1 text-left">
               <h3 className="text-lg font-bold text-foreground mb-2 tracking-tight">
                 {lang === "BN" ? "ডেডিকেটেড সাপোর্ট" : "Dedicated Support"}
               </h3>
@@ -138,19 +138,19 @@ export default function TrustAndPayment() {
                   : "Our support team is always available to help you when needed."}
               </p>
 
-              <div className="flex items-center justify-center sm:justify-start gap-2.5">
-                <button className="h-8.5 px-3.5 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-[11px] font-semibold flex items-center gap-1.5 hover:bg-emerald-900 hover:text-emerald-300 transition-all shadow-xs cursor-pointer">
+              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-2.5">
+                <button className="h-8.5 px-3.5 rounded  sm:rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-[11px] font-semibold flex items-center gap-1.5 hover:bg-emerald-900 hover:text-emerald-300 transition-all shadow-xs cursor-pointer">
                   <MessageSquare className="w-3.5 h-3.5" />
                   {lang === "BN" ? "লাইভ চ্যাট" : "Live Chat"}
                 </button>
-                <button className="h-8.5 px-3.5 rounded-xl bg-secondary text-secondary-foreground border border-border-custom text-[11px] font-semibold flex items-center gap-1.5 hover:bg-muted transition-all shadow-xs cursor-pointer">
+                <button className="h-8.5 px-3.5 rounded  sm:rounded-xl bg-secondary text-secondary-foreground border border-border-custom text-[11px] font-semibold flex items-center gap-1.5 hover:bg-muted transition-all shadow-xs cursor-pointer">
                   <Ticket className="w-3.5 h-3.5" />
                   {lang === "BN" ? "সাপোর্ট টিকিট" : "Support Ticket"}
                 </button>
               </div>
             </div>
 
-            <div className="w-20 h-20 shrink-0 rounded-full bg-linear-to-tr from-primary/10 to-transparent border border-primary/20 flex items-center justify-center relative shadow-inner group">
+            <div className="w-16 sm:w-20 aspect-square shrink-0 rounded-full bg-linear-to-tr from-primary/10 to-transparent border border-primary/20 flex items-center justify-center relative shadow-inner group">
               <div className="absolute inset-0 rounded-full bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md" />
               <Headphones
                 className="w-10 h-10 text-primary"
@@ -169,12 +169,12 @@ export default function TrustAndPayment() {
               : "We Support Multiple Payment Methods"}
           </p>
 
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 bg-card/60 ">
-            <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3.5 flex-1 w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-8  ">
+            <div className="grid grid-cols-5 md:grid-cols-5 lg:grid-cols-7 gap-2 sm:gap-3.5 flex-1 w-full">
               {paymentLogos.map((logo, index) => (
                 <div
                   key={index}
-                  className="h-16 bg-background dark:bg-foreground/60  rounded-xl border border-neutral-200/80 flex items-center justify-center p-1.5 hover:scale-105 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group"
+                  className="h-16 bg-card dark:bg-foreground/50  rounded  sm:rounded-xl border border-border-custom flex items-center justify-center p-1.5 hover:scale-105 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group"
                   title={logo.name}
                 >
                   <img
@@ -197,7 +197,7 @@ export default function TrustAndPayment() {
               <span className="text-[10px] text-muted-foreground font-semibold mb-2 uppercase tracking-wider">
                 Verified Secure Gateway
               </span>
-              <div className=" p-2 rounded-xl flex flex-col items-center justify-center shadow-sm  w-full max-w-45">
+              <div className=" p-2 rounded  sm:rounded-xl flex flex-col items-center justify-center shadow-sm  w-full max-w-45">
                 <img
                   src={ssl.src}
                   alt="SSLCommerz"

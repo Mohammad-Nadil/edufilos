@@ -34,7 +34,7 @@ export default function Banner() {
             alt="Banner Texture"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-right"
           />
         </div>
       )}

@@ -61,13 +61,13 @@ export default function Pricing({ plans: serverPlans }) {
       className="py-20  relative overflow-hidden select-none"
     >
       {BackgroundImg && (
-              <div className="pointer-events-none absolute inset-0 -z-10 opacity-10   dark:brightness-20 dark:opacity-30  ">
+              <div className="pointer-events-none absolute inset-0 -z-10 opacity-10 hidden md:block dark:brightness-20 dark:opacity-30  ">
                 <Image
                   src={BackgroundImg}
                   alt="Background Texture"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover object-left"
                 />
               </div>
             )}
@@ -86,7 +86,7 @@ export default function Pricing({ plans: serverPlans }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
           {plans.map((plan) => {
             const isPremium = plan.code === "PREMIUM";
             const currentFeatures =
@@ -95,10 +95,10 @@ export default function Pricing({ plans: serverPlans }) {
             return (
               <div
                 key={plan.code}
-                className={`relative flex flex-col justify-between bg-card text-card-foreground rounded-3xl p-8 transition-all duration-300 shadow-sm hover:shadow-xl ${
+                className={`relative flex flex-col justify-between bg-card text-card-foreground rounded-3xl p-5 sm:p-8 transition-all duration-300 shadow-sm hover:shadow-xl ${
                   isPremium
                     ? "border-2 border-gold ring-4 ring-gold/5 lg:scale-[1.03] z-10"
-                    : "border border-border-custom"
+                    : "border border-gold/30"
                 }`}
               >
                 {isPremium && (
@@ -108,11 +108,11 @@ export default function Pricing({ plans: serverPlans }) {
                 )}
 
                 <div className="flex flex-col items-center text-center">
-                  <h3 className="text-xl font-bold text-foreground mb-4">
+                  <h3 className="text-xl font-bold text-foreground sm:mb-4">
                     {lang === "BN" ? plan.name_bn : plan.name}
                   </h3>
 
-                  <div className="flex items-baseline justify-center mb-8">
+                  <div className="flex items-baseline justify-center  sm:mb-8">
                     <span className="text-2xl font-bold text-foreground mr-1">
                       ৳
                     </span>
@@ -123,11 +123,9 @@ export default function Pricing({ plans: serverPlans }) {
                       /{getBillingCycleText(plan.billingCycle)}
                     </span>
                   </div>
-
-                  <div className="w-full h-[1px] bg-border-custom mb-8" />
-
-                  <ul className="w-full flex flex-col space-y-4 text-left px-2">
-                    <li className="flex items-start gap-3 text-xs sm:text-sm font-medium text-foreground/80">
+                  <div className="w-full h-px bg-border-custom mb-4 sm:mb-8" />
+                  <ul className="w-full flex flex-col space-y-3 sm:space-y-4 text-left px-2">
+                    <li className="flex items-start gap-3 text-sm font-medium text-foreground/80">
                       <Check
                         className="w-4 h-4 text-emerald-600 dark:text-emerald-500 shrink-0 mt-0.5"
                         strokeWidth={3}
@@ -183,7 +181,7 @@ export default function Pricing({ plans: serverPlans }) {
                   </ul>
                 </div>
 
-                <div className="mt-8 pt-2">
+                <div className="mt-4 sm:mt-8 pt-2">
                   <Link
                     href={`/checkout?plan=${plan.code}&cycle=${plan.billingCycle.toLowerCase()}`}
                     className={`w-full h-12 rounded-2xl font-bold text-sm flex items-center justify-center transition-all shadow-sm active:scale-[0.98] ${

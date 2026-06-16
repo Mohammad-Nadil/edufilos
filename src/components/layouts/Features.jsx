@@ -61,7 +61,7 @@ export default function Features() {
             alt="Background Texture"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-right"
           />
         </div>
       )}
@@ -154,7 +154,7 @@ export default function Features() {
             </div>
           </div>
           <div className="xl:col-span-4 ">
-            <div className="bg-card border border-border-custom rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden flex flex-col space-y-8">
+            <div className="bg-primary dark:bg-primary/50 border border-border-custom rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden flex flex-col space-y-8">
               <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
 
               {stats.map((stat, idx) => {
@@ -166,7 +166,7 @@ export default function Features() {
                     </div>
 
                     <div className="flex flex-col">
-                      <span className="text-xl sm:text-2xl font-black  tracking-tight leading-none mb-1 font-mono">
+                      <span className="text-xl sm:text-2xl font-bold text-gold  tracking-tight leading-none mb-1 font-mono">
                         {stat.count}
                       </span>
                       <span className="text-xs font-semibold text-muted tracking-wide">
