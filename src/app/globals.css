@@ -3,31 +3,25 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f5f7f6;
+  --background: #f8faf9;
   --card-bg: #ffffff;
-
-  --foreground: #0f172a;
+  --foreground: #090d16;
   --text-muted: #64748b;
-
-  --primary: #0f766e;
+  --primary: #046a38;
   --primary-foreground: #ffffff;
-  --accent-gold: #ca8a04;
-
+  --accent-gold: #d2a503;
   --border-color: #e2e8f0;
 }
 
 .dark {
-  --background: #0f172a;
-  --card-bg: #1e293b;
-
-  --foreground: #f8fafc;
+  --background: #0b0f17;
+  --card-bg: #161b26;
+  --foreground: #f1f5f9;
   --text-muted: #94a3b8;
-
-  --primary: #14b8a6;
+  --primary: #046a38; 
   --primary-foreground: #ffffff;
-  --accent-gold: #eab308;
-
-  --border-color: #334155;
+  --accent-gold: #e5a91a;
+  --border-color: #222938;
 }
 
 @theme {
@@ -59,8 +53,8 @@ body {
   font-family: var(--font-sans);
 
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+    background-color 0.25s ease,
+    color 0.25s ease;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

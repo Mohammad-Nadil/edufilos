@@ -9,6 +9,7 @@ import Footer from "@/components/layouts/Footer";
 import PublicHeader from "@/components/layouts/PublicHeader";
 import { LanguageProvider } from "../context/LanguageContext";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -49,12 +50,18 @@ export default function RootLayout({ children }) {
       className={` ${playfair.variable} ${notoBengali.variable} ${amiri.variable} ${roboto.variable} h-full antialiased
       dark `}
     >
-      <body suppressHydrationWarning className=" flex flex-col relative overflow-x-clip!">
+      <body
+        suppressHydrationWarning
+        className=" flex flex-col relative overflow-x-clip!"
+      >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LanguageProvider>
-            <PublicHeader />
-            <main className="flex-1  ">{children}</main>
-            <Footer />
+            <Toaster position="top-center" />
+            <main className="flex flex-col min-h-screen">
+              <PublicHeader />
+              <div className="flex-1 h-full ">{children}</div>
+              <Footer />
+            </main>
           </LanguageProvider>
         </ThemeProvider>
       </body>
