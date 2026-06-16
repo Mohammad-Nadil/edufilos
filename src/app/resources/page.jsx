@@ -12,7 +12,7 @@ function ResourcesContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
   const [fileTypeFilter, setFileTypeFilter] = useState("all");
-  const [viewMode, setViewMode] = useState("grid"); // grid | list
+  const [viewMode, setViewMode] = useState("grid"); 
 
   const heroData = {
     badge: {
@@ -105,7 +105,7 @@ function ResourcesContent() {
       <Container className="  mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           
-          <aside className="lg:col-span-1   border border-neutral-200/60 dark:border-neutral-800/60 rounded-2xl xl:p-6 shadow-xs lg:sticky top-20">
+          <aside className="lg:col-span-1   border border-neutral-200/60 dark:border-neutral-800/60 rounded-2xl p-3 xl:p-6 shadow-xs lg:sticky top-20">
             <div className="flex items-center gap-2 text-neutral-800 dark:text-neutral-200 font-bold text-sm uppercase tracking-wider mb-6">
               <FiSliders className="text-primary w-4 h-4" />
               <span>{lang === "BN" ? "ফিল্টার প্যানেল" : "Filter Center"}</span>

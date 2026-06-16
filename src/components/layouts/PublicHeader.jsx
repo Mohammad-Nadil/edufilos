@@ -20,7 +20,7 @@ export default function PublicHeader() {
       bn: "ফিচারসমূহ",
       hasDropdown: true,
       dropdownItems: [
-        { href: "#student", en: "Student Management", bn: "ছাত্র ব্যবস্থাপনা" },
+        { href: "/studentManagement", en: "Student Management", bn: "ছাত্র ব্যবস্থাপনা" },
         { href: "#academic", en: "Academic System", bn: "একাডেমিক সিস্টেম" },
         { href: "#fees", en: "Fees Management", bn: "ফি কালেকশন" },
       ],
