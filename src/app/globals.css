@@ -3,30 +3,38 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f7f2ee;
+  --background: #f5f7f6;
   --card-bg: #ffffff;
+
   --foreground: #0f172a;
   --text-muted: #64748b;
-  --primary: #064e3b;
+
+  --primary: #0f766e;
   --primary-foreground: #ffffff;
-  --accent-gold: #b38f36;
-  --border-color: #efece6;
+  --accent-gold: #ca8a04;
+
+  --border-color: #e2e8f0;
 }
+
 .dark {
-  --background: #1e2220;
-  --card-bg: #262a28;
-  --foreground: #e2e8f0;
+  --background: #0f172a;
+  --card-bg: #1e293b;
+
+  --foreground: #f8fafc;
   --text-muted: #94a3b8;
-  --primary: #10b981;
-  --primary-foreground: #0f172a;
-  --accent-gold: #d4af37;
-  --border-color: #2f3532;
+
+  --primary: #14b8a6;
+  --primary-foreground: #ffffff;
+  --accent-gold: #eab308;
+
+  --border-color: #334155;
 }
 
 @theme {
   --breakpoint-xs: 359px;
-  --breakpoint-3xl:1920px;
+  --breakpoint-3xl: 1920px;
 
+  /* Colors */
   --color-background: var(--background);
   --color-card: var(--card-bg);
   --color-foreground: var(--foreground);
@@ -36,6 +44,7 @@
   --color-gold: var(--accent-gold);
   --color-border-custom: var(--border-color);
 
+  /* Fonts */
   --font-en: var(--font-english), sans-serif;
   --font-bn: var(--font-bangla), sans-serif;
   --font-ar: var(--font-arabic), serif;
@@ -48,7 +57,11 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
