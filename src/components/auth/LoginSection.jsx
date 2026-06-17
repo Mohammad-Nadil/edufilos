@@ -12,8 +12,6 @@ export default function LoginSection() {
 
   return (
     <>
-      <PublicHeader />
-
       <main className="min-h-screen bg-background pt-32 pb-20">
         <Container>
           <div className="grid lg:grid-cols-2 gap-10 items-center">
