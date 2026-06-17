@@ -34,7 +34,7 @@ export default function CtaBanner() {
           alt=""
           width={170}
           height={260}
-          className="absolute right-4 bottom-0 w-28 md:w-36 lg:w-44 scale-x-[-1] pointer-events-none opacity-90"
+          className="absolute right-4 bottom-0 w-28 md:w-36 lg:w-44 h-auto scale-x-[-1] pointer-events-none opacity-90"
         />
 
         <Image
@@ -42,7 +42,7 @@ export default function CtaBanner() {
           alt=""
           width={80}
           height={120}
-          className="absolute right-16 -top-24 w-12 md:w-16 lg:w-20"
+          className="absolute right-16 -top-24 w-12 md:w-16 lg:w-20 h-auto"
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-14">
@@ -85,7 +85,8 @@ export default function CtaBanner() {
                 </button>
               </Link>
 
-              <Link href="/feature"
+              <Link
+                href="/feature"
                 className={`border border-white transition-all font-semibold px-6 py-5 rounded-xl flex items-center gap-3 cursor-pointer
                   ${
                     isDark

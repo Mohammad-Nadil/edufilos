@@ -3,12 +3,7 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import Container from "../ui/Container";
-import {
-  MessageSquare,
-  Ticket,
-  ShieldCheck,
-  Headphones,
-} from "lucide-react";
+import { MessageSquare, Ticket, ShieldCheck, Headphones } from "lucide-react";
 import visaImg from "@/../public/visaLogo.png";
 import mastercardImg from "@/../public/masterLogo.png";
 import americanImg from "@/../public/americalLogo.png";
@@ -97,12 +92,19 @@ export default function TrustAndPayment() {
               </div>
             </div>
             <div className="relative w-1/7 sm:w-1/6 aspect-1/2">
-              <Image src={phoneImg} fill alt="phone" className="relative z-20" />
+              <Image
+                src={phoneImg}
+                fill
+                alt="phone"
+                sizes="(max-width: 640px) 14vw, 17vw"
+                className="relative z-20"
+              />
               <Image
                 src={placeholder}
                 fill
                 alt="placeholder"
-                className="object-cover absolute inset-0 z-10 rounded  sm:rounded-xl md:rounded-2xl"
+                sizes="(max-width: 640px) 14vw, 17vw"
+                className="object-cover absolute inset-0 z-10 rounded sm:rounded-xl md:rounded-2xl"
               />
             </div>
           </div>

@@ -62,7 +62,7 @@ export default function DemoSection() {
     "w-full h-12 rounded-xl border border-border-custom bg-background px-4 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all";
 
   return (
-    <section className="py-28 md:py-36">
+    <section className="py-10">
       <Container>
         {/* Header */}
 

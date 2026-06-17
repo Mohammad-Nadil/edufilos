@@ -71,18 +71,18 @@ function CheckoutContent() {
             fontWeight: "500",
             borderRadius: "10px",
           },
-        }
+        },
       );
       return;
     }
 
     setLoading(true);
-    
+
     // গেটওয়ে লোড হওয়ার সময় একটি ডাইনামিক লোডিং টোস্ট
     const loadingToast = toast.loading(
-      lang === "BN" 
-        ? "SSLCommerz গেটওয়েতে সংযোগ করা হচ্ছে..." 
-        : "Connecting to SSLCommerz gateway..."
+      lang === "BN"
+        ? "SSLCommerz গেটওয়েতে সংযোগ করা হচ্ছে..."
+        : "Connecting to SSLCommerz gateway...",
     );
 
     try {
@@ -106,7 +106,7 @@ function CheckoutContent() {
       } else {
         toast.dismiss(loadingToast);
         setLoading(false);
-        
+
         toast.error(
           data?.error ||
             (lang === "BN"
@@ -118,14 +118,14 @@ function CheckoutContent() {
               fontWeight: "500",
               borderRadius: "10px",
             },
-          }
+          },
         );
       }
     } catch (err) {
       console.error("SSLCommerz Integration Error:", err);
       toast.dismiss(loadingToast);
       setLoading(false);
-      
+
       toast.error(
         lang === "BN"
           ? "সার্ভারের সাথে সংযোগ বিচ্ছিন্ন হয়েছে। ইন্টারনেট কানেকশন চেক করুন।"
@@ -136,25 +136,25 @@ function CheckoutContent() {
             fontWeight: "500",
             borderRadius: "10px",
           },
-        }
+        },
       );
     }
   };
 
   return (
     <main className="relative min-h-screen bg-background font-body-md text-on-background py-16 selection:bg-primary/10">
-     {textureImg && (
-  <div className="pointer-events-none absolute inset-0 -z-10 opacity-50 dark:brightness-50 dark:opacity-10  ">
-    <Image
-      src={textureImg}
-      alt="Background Texture"
-      fill
-      priority
-      sizes="100vw" // এই যে, এখানে গুজে দিলাম!
-      className="object-cover object-right"
-    />
-  </div>
-)}
+      {textureImg && (
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-50 dark:brightness-50 dark:opacity-10  ">
+          <Image
+            src={textureImg}
+            alt="Background Texture"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+        </div>
+      )}
       <Container className=" relative z-10">
         <div className="mb-8">
           <Link
