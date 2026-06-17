@@ -87,7 +87,7 @@ export default function ModulesSection() {
                   {lang === "BN" ? mod.bn : mod.en}
                 </h3>
 
-                <p className="text-xs text-muted-foreground font-medium leading-relaxed max-w-50">
+                <p className="text-xs text-muted font-medium leading-relaxed max-w-50">
                   {lang === "BN" ? mod.descBn : mod.descEn}
                 </p>
               </div>

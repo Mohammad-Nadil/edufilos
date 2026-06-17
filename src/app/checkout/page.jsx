@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
+import toast from "react-hot-toast"; // react-hot-toast ইমপোর্ট করা হলো
 import {
   FiArrowLeft,
   FiCheckCircle,
@@ -53,21 +54,36 @@ function CheckoutContent() {
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
 
+    // ভ্যালিডেশন চেক এবং কাস্টম টোস্ট মেসেজ
     if (
       !formData.madrashaName ||
       !formData.contactPerson ||
       !formData.email ||
       !formData.address
     ) {
-      alert(
+      toast.error(
         lang === "BN"
           ? "অনুগ্রহ করে সকল প্রাতিষ্ঠানিক ও বিলিং তথ্য সঠিকভাবে পূরণ করুন।"
           : "Please complete all institutional and billing fields correctly.",
+        {
+          style: {
+            fontSize: "14px",
+            fontWeight: "500",
+            borderRadius: "10px",
+          },
+        }
       );
       return;
     }
 
     setLoading(true);
+    
+    // গেটওয়ে লোড হওয়ার সময় একটি ডাইনামিক লোডিং টোস্ট
+    const loadingToast = toast.loading(
+      lang === "BN" 
+        ? "SSLCommerz গেটওয়েতে সংযোগ করা হচ্ছে..." 
+        : "Connecting to SSLCommerz gateway..."
+    );
 
     try {
       const response = await fetch("/api/payment/ssl-init", {
@@ -85,35 +101,60 @@ function CheckoutContent() {
       const data = await response.json();
 
       if (data?.url) {
+        toast.dismiss(loadingToast);
         window.location.href = data.url;
       } else {
-        alert(
+        toast.dismiss(loadingToast);
+        setLoading(false);
+        
+        toast.error(
           data?.error ||
             (lang === "BN"
               ? "SSLCommerz গেটওয়ে লোড করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।"
               : "Failed to load SSLCommerz gateway. Please try again."),
+          {
+            style: {
+              fontSize: "14px",
+              fontWeight: "500",
+              borderRadius: "10px",
+            },
+          }
         );
-        setLoading(false);
       }
     } catch (err) {
       console.error("SSLCommerz Integration Error:", err);
+      toast.dismiss(loadingToast);
       setLoading(false);
+      
+      toast.error(
+        lang === "BN"
+          ? "সার্ভারের সাথে সংযোগ বিচ্ছিন্ন হয়েছে। ইন্টারনেট কানেকশন চেক করুন।"
+          : "Server connection failed. Please check your internet connection.",
+        {
+          style: {
+            fontSize: "14px",
+            fontWeight: "500",
+            borderRadius: "10px",
+          },
+        }
+      );
     }
   };
 
   return (
     <main className="relative min-h-screen bg-background font-body-md text-on-background py-16 selection:bg-primary/10">
-      {textureImg && (
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-50 dark:brightness-50 dark:opacity-10  ">
-          <Image
-            src={textureImg}
-            alt="Background Texture"
-            fill
-            priority
-            className="object-cover object-right"
-          />
-        </div>
-      )}
+     {textureImg && (
+  <div className="pointer-events-none absolute inset-0 -z-10 opacity-50 dark:brightness-50 dark:opacity-10  ">
+    <Image
+      src={textureImg}
+      alt="Background Texture"
+      fill
+      priority
+      sizes="100vw" // এই যে, এখানে গুজে দিলাম!
+      className="object-cover object-right"
+    />
+  </div>
+)}
       <Container className=" relative z-10">
         <div className="mb-8">
           <Link
@@ -204,7 +245,7 @@ function CheckoutContent() {
                     <span className="text-error">*</span>
                   </label>
                   <input
-                    type="email"
+                    type="type"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -249,7 +290,7 @@ function CheckoutContent() {
             </form>
           </div>
 
-          <div className="lg:col-span-5   ">
+          <div className="lg:col-span-5    ">
             <div className="sticky top-24 bg-card rounded-xl border-t-4 border-t-primary border border-muted/50 shadow-[0_4px_20px_rgba(6,78,59,0.03)] overflow-hidden">
               <div className="p-6 md:p-8 border-b border-muted/50">
                 <h2 className="font-headline-sm text-xl md:text-headline-sm text-primary mb-1">
@@ -341,7 +382,7 @@ function CheckoutContent() {
                 <button
                   onClick={handlePaymentSubmit}
                   disabled={loading}
-                  className="w-full bg-primary/90 text-white  py-3.5 rounded-xl font-semibold text-base hover:bg-primary/50 transition-all shadow-md active:scale-[0.98] duration-200 mt-4 flex justify-center items-center gap-2 disabled:opacity-50"
+                  className="w-full bg-primary text-white py-3.5 rounded-xl font-semibold text-base hover:opacity-90 transition-all shadow-md active:scale-[0.98] duration-200 mt-4 flex justify-center items-center gap-2 disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <span className="animate-pulse flex items-center gap-2">

@@ -14,7 +14,7 @@ export default function page({ user }) {
   const language = "bn";
 
   return (
-    <div className=" antialiased font-sans  ">
+    <div className="h-full antialiased font-sans  ">
       <Banner />
       <ModulesSection />
       <Features />

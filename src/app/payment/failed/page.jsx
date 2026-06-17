@@ -1,49 +1,60 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
-import { AlertTriangle, RefreshCw, MessageSquare } from "lucide-react";
-import IslamicPattern from "@/components/ui/IslamicPattern";
+import { useLanguage } from "@/context/LanguageContext";
+import { AlertCircle, RefreshCw, HelpCircle } from "lucide-react";
+
+function FailedContent() {
+  const { lang } = useLanguage();
+
+  return (
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white dark:bg-card border border-neutral-200/60 dark:border-border-custom/60 rounded-2xl p-6 text-center shadow-2xs">
+        
+        <div className="w-16 h-16 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-rose-500/10">
+          <AlertCircle className="w-8 h-8" />
+        </div>
+
+        <h1 className="text-xl font-black text-neutral-900 dark:text-white">
+          {lang === "BN" ? "পেমেন্ট ব্যর্থ হয়েছে" : "Payment Failed"}
+        </h1>
+        
+        <p className="text-xs sm:text-sm text-neutral-500 dark:text-muted-foreground font-medium mt-2 px-2">
+          {lang === "BN" 
+            ? "দুঃখিত! আপনার অ্যাকাউন্টে পর্যাপ্ত ব্যালেন্স না থাকা বা সার্ভার ত্রুটির কারণে ট্রানজেকশনটি সম্পন্ন করা যায়নি।" 
+            : "Your transaction could not be processed due to insufficient balance or a temporary gateway issue."}
+        </p>
+
+        <div className="mt-5 text-left bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-100 dark:border-border-custom/20 rounded-xl p-3.5 text-xs text-neutral-500 dark:text-muted-foreground space-y-1.5 font-medium">
+          <span className="text-neutral-700 dark:text-neutral-300 font-bold block mb-1">
+            {lang === "BN" ? "করণীয় পদক্ষেপ:" : "Suggested Actions:"}
+          </span>
+          <p>• {lang === "BN" ? "আপনার ওয়ালেট বা কার্ডের ব্যালেন্স চেক করুন।" : "Verify your card or mobile wallet balance."}</p>
+          <p>• {lang === "BN" ? "পিন বা ওটিপি (OTP) সঠিক দিয়েছেন কিনা নিশ্চিত হোন।" : "Double-check your account credentials & try again."}</p>
+        </div>
+
+        <div className="mt-6 flex flex-col sm:flex-row gap-2">
+          <Link href="/checkout" className="flex-1 h-11 px-4 rounded-xl bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-2 hover:bg-rose-700 transition-all cursor-pointer">
+            <RefreshCw className="w-3.5 h-3.5" />
+            <span>{lang === "BN" ? "আবার চেষ্টা করুন" : "Try Again"}</span>
+          </Link>
+          
+          <Link href="/support" className="flex-1 h-11 px-4 rounded-xl border border-neutral-200 dark:border-border-custom cursor-not-allowed text-neutral-600 dark:text-neutral-300 font-bold text-xs flex items-center justify-center gap-2 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all">
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>{lang === "BN" ? "সাপোর্ট সেন্টারে যান" : "Get Support"}</span>
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  );
+}
 
 export default function PaymentFailedPage() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4 relative overflow-hidden">
-      <IslamicPattern variant="floral" opacity={0.03} />
-
-      <div className="w-full max-w-md bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-8 text-center border border-rose-100 relative z-10">
-        <div className="mx-auto w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6">
-          <AlertTriangle className="w-10 h-10 text-rose-600" />
-        </div>
-
-        <span className="text-[10px] uppercase font-bold tracking-widest bg-rose-500/10 px-3 py-1 rounded-full text-rose-700 border border-rose-500/20">
-          Transaction Failed
-        </span>
-
-        <h2 className="text-2xl font-bold text-slate-900 mt-4 tracking-tight">দুঃখিত, পেমেন্টটি ব্যর্থ হয়েছে</h2>
-        <p className="text-sm text-slate-600 mt-2 px-2">
-          আপনার ব্যাংক বা পেমেন্ট গেটওয়ে থেকে ট্রানজেকশনটি রিজেক্ট করা হয়েছে। অনুগ্রহ করে কার্ডের ব্যালেন্স বা তথ্য চেক করে আবার চেষ্টা করুন।
-        </p>
-
-        <div className="mt-6 p-4 rounded-2xl bg-rose-50/50 border border-rose-100/50 text-xs text-rose-800 text-left">
-          💡 যদি আপনার অ্যাকাউন্ট থেকে টাকা কেটে নেওয়া হয়ে থাকে এবং সাবস্ক্রিপশন চালু না হয়, তবে আমাদের সাপোর্ট লাইনে যোগাযোগ করুন।
-        </div>
-
-        <div className="mt-8 space-y-3">
-          <Link href="/#pricing" className="w-full block">
-            <button className="w-full bg-linear-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-rose-600/10 active:scale-[0.99] transition-all flex items-center justify-center gap-2">
-              <RefreshCw className="w-4 h-4" />
-              Re-attempt Payment
-            </button>
-          </Link>
-
-          <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noreferrer" className="w-full block">
-            <button className="w-full bg-white hover:bg-slate-50 text-slate-700 font-semibold py-3 px-6 rounded-xl border border-slate-200 transition-colors flex items-center justify-center gap-2 text-sm">
-              <MessageSquare className="w-4 h-4 text-slate-400" />
-              Contact Support
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-xs font-bold text-neutral-400">LOADING...</div>}>
+      <FailedContent />
+    </Suspense>
   );
 }

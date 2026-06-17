@@ -162,16 +162,14 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[10px] sm:text-xs font-medium text-slate-500 gap-4">
-          {/* বাম পাশের কপিরাইট টেক্সট */}
           <span>
             © {new Date().getFullYear()}{" "}
             <span className="text-muted font-semibold">EduFilos</span>. All
             rights reserved.
           </span>
 
-          {/* ডান পাশের এজেন্সী ক্রেডিট ব্র্যান্ডিং */}
           <Link
-            href="https://devonionx.com" // আপনার এজেন্সির আসল লিংক এখানে বসিয়ে দিন
+            href="https://devonionx.com" 
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-slate-600 hover:text-gold transition-colors duration-200 group"

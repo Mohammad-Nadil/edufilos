@@ -1,45 +1,53 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
-import { XCircle, RefreshCw, HelpCircle } from "lucide-react";
-import IslamicPattern from "@/components/ui/IslamicPattern";
+import { useLanguage } from "@/context/LanguageContext";
+import { XCircle, CornerUpLeft } from "lucide-react";
+
+function CancelContent() {
+  const { lang } = useLanguage();
+
+  return (
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-background flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white dark:bg-card border border-neutral-200/60 dark:border-border-custom/60 rounded-2xl p-6 text-center shadow-2xs">
+        
+        <div className="w-16 h-16 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/10">
+          <XCircle className="w-8 h-8" />
+        </div>
+
+        <h1 className="text-xl font-black text-neutral-900 dark:text-white">
+          {lang === "BN" ? "পেমেন্ট বাতিল করা হয়েছে" : "Payment Cancelled"}
+        </h1>
+        
+        <p className="text-xs sm:text-sm text-neutral-500 dark:text-muted-foreground font-medium mt-2 px-4">
+          {lang === "BN" 
+            ? "আপনি নিজেই পেমেন্ট প্রসেসটি বাতিল করেছেন। আপনার অ্যাকাউন্ট থেকে কোনো টাকা কাটা হয়নি।" 
+            : "The payment process has been aborted by the user. No funds have been deducted from your account."}
+        </p>
+
+        <div className="mt-5 bg-amber-50/50 dark:bg-amber-500/5 border border-amber-500/10 rounded-xl p-3.5 text-xs text-amber-800 dark:text-amber-400 font-medium text-center">
+          {lang === "BN" 
+            ? "বকেয়া ফি বা জরিমানা এড়াতে নির্ধারিত সময়ের মধ্যে ফি পরিশোধ করার জন্য অনুরোধ করা হলো।" 
+            : "Please settle pending invoices before the due date to ensure uninterrupted portal access."}
+        </div>
+
+        <div className="mt-6">
+          <Link href="/#pricing" className="w-full h-11 px-4 rounded-xl bg-primary text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs hover:brightness-105 transition-all">
+            <CornerUpLeft className="w-4 h-4" />
+            <span>{lang === "BN" ? "পেমেন্ট পেজে ফিরে যান" : "Return to Payments"}</span>
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  );
+}
 
 export default function PaymentCancelPage() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4 relative overflow-hidden">
-      <IslamicPattern variant="floral" opacity={0.03} />
-
-      <div className="w-full max-w-md bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-8 text-center border border-slate-200 relative z-10">
-        <div className="mx-auto w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-6">
-          <XCircle className="w-10 h-10 text-slate-500" />
-        </div>
-
-        <span className="text-[10px] uppercase font-bold tracking-widest bg-slate-500/10 px-3 py-1 rounded-full text-slate-700 border border-slate-500/20">
-          Payment Cancelled
-        </span>
-
-        <h2 className="text-2xl font-bold text-slate-900 mt-4 tracking-tight">পেমেন্ট বাতিল করা হয়েছে</h2>
-        <p className="text-sm text-slate-500 mt-2 px-4">
-          আপনি নিজেই পেমেন্ট প্রসেসটি বাতিল করেছেন। কোনো টাকা কাটা হয়নি। আপনি চাইলে আবার চেষ্টা করতে পারেন।
-        </p>
-
-        <div className="mt-8 space-y-3">
-          <Link href="/#pricing" className="w-full block">
-            <button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
-              <RefreshCw className="w-4 h-4" />
-              Try Again
-            </button>
-          </Link>
-
-          <Link href="/#pricing" className="w-full block">
-            <button className="w-full bg-white hover:bg-slate-50 text-slate-700 font-semibold py-3 px-6 rounded-xl border border-slate-200 transition-colors flex items-center justify-center gap-2 text-sm">
-              <HelpCircle className="w-4 h-4 text-slate-400" />
-              Change Plan
-            </button>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-xs font-bold text-neutral-400">LOADING...</div>}>
+      <CancelContent />
+    </Suspense>
   );
 }
