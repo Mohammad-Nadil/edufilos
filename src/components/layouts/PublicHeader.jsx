@@ -28,7 +28,7 @@ export default function PublicHeader() {
         { href: "/feesManagement", en: "Fees Management", bn: "ফি কালেকশন" },
       ],
     },
-    { href: "/#pricing", en: "Pricing", bn: "প্রাইসিং" },
+    { href: "/pricing", en: "Pricing", bn: "প্রাইসিং" },
     { href: "/module", en: "Modules", bn: "মডিউলস" },
     { href: "/resources", en: "Resources", bn: "রিসোর্স" },
     { href: "/about", en: "About Us", bn: "আমাদের সম্পর্কে" },

@@ -1,14 +1,12 @@
 "use client";
 
 import { moduleData } from "@/helper/module/moduleData";
-import ThemeToggle from "../ui/ThemeToggle";
 import { useLanguage } from "@/context/LanguageContext";
 import ModulesGrid from "./ModulesGrid";
 import Container from "../ui/Container";
 
 export default function ModulesSection() {
   const { lang } = useLanguage();
-
   const data = moduleData[lang];
 
   return (
