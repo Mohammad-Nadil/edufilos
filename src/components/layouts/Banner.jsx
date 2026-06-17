@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-
 import BannerImg from "@/../public/banner.jpeg";
 import MacImg from "@/../public/mac.png";
 import PhoneImg from "@/../public/phone.png";
@@ -34,6 +33,7 @@ export default function Banner() {
             alt="Banner Texture"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-right"
           />
         </div>
@@ -133,6 +133,7 @@ export default function Banner() {
               alt="EduFilos Dashboard Desktop View"
               fill
               priority
+              sizes="(max-width: 1024px) 85vw, 42vw"
               className="absolute w-full h-full z-20"
             />
             <div className="object-cover w-full h-full  z-10">
@@ -154,6 +155,7 @@ export default function Banner() {
               alt="EduFilos Dashboard mobile View"
               fill
               priority
+              sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 12vw"
               className="absolute w-full h-full z-40"
             />
             <Image
@@ -161,7 +163,8 @@ export default function Banner() {
               alt="Calligraphy Background"
               fill
               priority
-              className="object-cover  z-30"
+              sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 12vw"
+              className="object-cover z-30"
             />
           </div>
         </div>

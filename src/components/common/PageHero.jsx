@@ -12,6 +12,7 @@ import Container from "../ui/Container";
 import { GoShieldCheck } from "react-icons/go";
 import { GiTrophyCup } from "react-icons/gi";
 import { FaSchool, FaUser } from "react-icons/fa";
+import { IoStar } from "react-icons/io5";
 
 export default function PageHero({ badge, title, description, videoUrl }) {
   const { lang } = useLanguage();
@@ -54,16 +55,15 @@ export default function PageHero({ badge, title, description, videoUrl }) {
           alt="Islamic Pattern Texture"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
       </div>
 
       <Container className="px-4 relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-8 items-center w-full">
-        
         <div className="w-full lg:w-6/12 flex flex-col text-center lg:text-left items-center lg:items-start gap-y-5">
-          
-          <div className="inline-flex items-center gap-2 border border-primary/40 rounded-full px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-primary/90 bg-primary/5">
-            ✦ {lang === "BN" ? badge.bn : badge.en}
+          <div className="inline-flex items-center gap-1 border border-primary/40 rounded-full px-3 py-1 text-[11px] font-bold tracking-wider uppercase text-primary/90 bg-primary/5">
+            <IoStar /> {lang === "BN" ? badge.bn : badge.en}
           </div>
 
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-neutral-900 dark:text-foreground leading-tight tracking-tight max-w-xl">
@@ -119,7 +119,7 @@ export default function PageHero({ badge, title, description, videoUrl }) {
             </Link>
 
             <Link
-              href="#features"
+              href="/studentManagement"
               className="h-12 w-full sm:w-auto px-6 rounded-xl bg-white dark:bg-card border border-neutral-200 dark:border-border-custom text-neutral-800 dark:text-foreground font-bold text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all flex items-center justify-center"
             >
               {lang === "BN" ? "ফিচারসমূহ দেখুন ➔" : "Explore Features ➔"}
@@ -128,7 +128,6 @@ export default function PageHero({ badge, title, description, videoUrl }) {
         </div>
 
         <div className="w-full lg:w-6/12 flex flex-col items-center justify-center relative mt-6 lg:mt-0 min-h-[320px] sm:min-h-[450px]">
-          
           <div className="absolute top-0 left-1/2 -translate-x-1/2 text-center w-full z-0">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-ar text-amber-700/90 dark:text-amber-500/80 tracking-wide mb-1 font-medium">
               اِقْرَأْ وَرَبُّكَ الْأَكْرَمُ
@@ -145,13 +144,13 @@ export default function PageHero({ badge, title, description, videoUrl }) {
           </div>
 
           <div className="relative w-full flex items-center justify-center z-10 mt-20 sm:mt-24">
-            
             <div className="relative w-full sm:w-[85%] aspect-5/3 z-10 rounded-xl overflow-hidden">
               <Image
                 src={MacImg}
                 alt="Desktop View"
                 fill
                 priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 85vw, 42vw"
                 className="absolute w-full h-full z-20 pointer-events-none"
               />
 
@@ -172,16 +171,17 @@ export default function PageHero({ badge, title, description, videoUrl }) {
                 src={PhoneImg}
                 fill
                 alt="phone frame"
+                sizes="(max-width: 640px) 26vw, 22vw"
                 className="relative z-20 pointer-events-none"
               />
               <Image
                 src={Placeholder}
                 fill
                 alt="phone screen wallpaper"
+                sizes="(max-width: 640px) 26vw, 22vw"
                 className="object-cover absolute inset-0 z-10 rounded-[10%] p-[4%]"
               />
             </div>
-
           </div>
         </div>
       </Container>

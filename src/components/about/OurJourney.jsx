@@ -63,6 +63,7 @@ export default function OurJourney() {
                 src="/missions.png"
                 alt={content.mission.title[lang]}
                 fill
+                sizes="288px"
                 className="object-contain object-bottom-right"
               />
             </div>
@@ -91,6 +92,7 @@ export default function OurJourney() {
                 src="/vision.png"
                 alt={content.vision.title[lang]}
                 fill
+                sizes="192px"
                 className="object-contain object-bottom-right"
               />
             </div>
