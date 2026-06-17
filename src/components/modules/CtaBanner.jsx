@@ -6,6 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "next-themes";
 import { ctaText } from "@/helper/module/cta";
 import Link from "next/link";
+import lanternImg from "@/../public/lantern.png";
 
 export default function CtaBanner() {
   const { lang } = useLanguage();
@@ -38,11 +39,12 @@ export default function CtaBanner() {
         />
 
         <Image
-          src="/lantern.png"
-          alt=""
+          src={lanternImg}
+          alt="lantern image"
           width={80}
           height={120}
-          className="absolute right-16 -top-24 w-12 md:w-16 lg:w-20 h-auto"
+          className="absolute right-16 -top-24 w-12 md:w-16 lg:w-20"
+          style={{ width: "100%", height: "auto" }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-14">

@@ -24,7 +24,7 @@ export default function Banner() {
   return (
     <section
       id="banner"
-      className="relative w-full pt-20 sm:pt-24  2xl:pt-12 flex items-center overflow-hidden "
+      className="relative w-full pt-12 sm:pt-24  2xl:pt-12 flex items-center overflow-hidden "
     >
       {BannerImg && (
         <div className="absolute inset-0 z-0 saturate-50 opacity-20 pointer-events-none dark:opacity-10 dark:saturate-0 ">

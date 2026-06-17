@@ -7,7 +7,7 @@ import Container from "../ui/Container";
 import { Check } from "lucide-react";
 import BackgroundImg from "@/../public/background2.jpg";
 import Image from "next/image";
-import { PLAN_LIST } from "@/temp";
+import { PLAN_LIST } from "@/helper/pricing/homePricing";
 
 export default function Pricing({ plans: serverPlans }) {
   const { lang } = useLanguage();

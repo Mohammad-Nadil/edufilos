@@ -13,6 +13,7 @@ import {
   FiCheckCircle,
   FiAlertCircle,
 } from "react-icons/fi";
+import { MASTER_STUDENT } from "@/constants/studentData";
 
 function StudentManagementContent() {
   const { lang } = useLanguage();
@@ -45,54 +46,10 @@ function StudentManagementContent() {
     [],
   );
 
-  const masterStudents = useMemo(
-    () => [
-      {
-        id: "STU-001",
-        name: { en: "Abdullah Al Mansur", bn: "আব্দুল্লাহ আল মনসুর" },
-        class: "Class 6",
-        roll: "01",
-        status: "active",
-        guardian: "Md. Mansur",
-      },
-      {
-        id: "STU-002",
-        name: { en: "Zayd Ibn Harith", bn: "যায়দ ইবনে হারিস" },
-        class: "Class 7",
-        roll: "05",
-        status: "active",
-        guardian: "Harith Ahmed",
-      },
-      {
-        id: "STU-003",
-        name: { en: "Fatima Tuj Zohra", bn: "ফাতিমা তুজ জোহরা" },
-        class: "Class 6",
-        roll: "02",
-        status: "inactive",
-        guardian: "Abdul Karim",
-      },
-      {
-        id: "STU-004",
-        name: { en: "Umar Farooq", bn: "উমর ফারুক" },
-        class: "Class 8",
-        roll: "12",
-        status: "active",
-        guardian: "Rafiqul Islam",
-      },
-      {
-        id: "STU-005",
-        name: { en: "Aisha Rahman", bn: "আয়েশা রহমান" },
-        class: "Class 7",
-        roll: "03",
-        status: "active",
-        guardian: "Fazlur Rahman",
-      },
-    ],
-    [],
-  );
+  
 
   const filteredStudents = useMemo(() => {
-    return masterStudents.filter((student) => {
+    return MASTER_STUDENT.filter((student) => {
       const matchesClass =
         selectedClass === "all" || student.class === selectedClass;
       const nameText = lang === "BN" ? student.name.bn : student.name.en;
@@ -101,7 +58,7 @@ function StudentManagementContent() {
         student.id.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesClass && matchesSearch;
     });
-  }, [searchQuery, selectedClass, masterStudents, lang]);
+  }, [searchQuery, selectedClass, MASTER_STUDENT, lang]);
 
   return (
     <div className="min-h-screen bg-bg-background text-neutral-800 dark:text-foreground pt-6 pb-24">

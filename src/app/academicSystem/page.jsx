@@ -14,6 +14,7 @@ import {
   FiAlertCircle,
   FiBookmark,
 } from "react-icons/fi";
+import { MASTER_ACADEMIC } from "@/constants/academicData";
 
 function AcademicSystemContent() {
   const { lang } = useLanguage();
@@ -46,57 +47,9 @@ function AcademicSystemContent() {
     [],
   );
 
-  const masterAcademic = useMemo(
-    () => [
-      {
-        id: "ACA-101",
-        subject: { en: "General Mathematics", bn: "সাধারণ গণিত" },
-        class: "Class 8",
-        time: "০৯:০০ AM - ০৯:৪৫ AM",
-        teacher: "Mizanur Rahman",
-        room: "রুম ৩০১",
-      },
-      {
-        id: "ACA-102",
-        subject: { en: "English Grammar", bn: "ইংরেজি ব্যাকরণ" },
-        class: "Class 6",
-        time: "০৯:৪৫ AM - ১০:৩০ AM",
-        teacher: "Farhana Yasmin",
-        room: "রুম ১০২",
-      },
-      {
-        id: "ACA-103",
-        subject: { en: "Bangla Literature", bn: "বাংলা সাহিত্য" },
-        class: "Class 7",
-        time: "১০:৪৫ AM - ১১:৩০ AM",
-        teacher: "Abdul Wadud",
-        room: "রুম ২০১",
-      },
-      {
-        id: "ACA-104",
-        subject: { en: "General Science", bn: "সাধারণ বিজ্ঞান" },
-        class: "Class 8",
-        time: "১১:৩০ AM - ১২:১৫ PM",
-        teacher: "Dr. Anisur Rahman",
-        room: "রুম ৩০৪",
-      },
-      {
-        id: "ACA-105",
-        subject: {
-          en: "Bangladesh & Global Studies",
-          bn: "বাংলাদেশ ও বিশ্বপরিচয়",
-        },
-        class: "Class 7",
-        time: "১২:১৫ PM - ০১:০০ PM",
-        teacher: "Nasrin Sultana",
-        room: "রুম ২০৩",
-      },
-    ],
-    [],
-  );
-
+ 
   const filteredAcademic = useMemo(() => {
-    return masterAcademic.filter((item) => {
+    return MASTER_ACADEMIC.filter((item) => {
       const matchesClass =
         selectedClass === "all" || item.class === selectedClass;
       const subjectText = lang === "BN" ? item.subject.bn : item.subject.en;
@@ -105,7 +58,7 @@ function AcademicSystemContent() {
         item.teacher.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesClass && matchesSearch;
     });
-  }, [searchQuery, selectedClass, masterAcademic, lang]);
+  }, [searchQuery, selectedClass, MASTER_ACADEMIC, lang]);
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-6 pb-24">

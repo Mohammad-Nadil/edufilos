@@ -1,0 +1,42 @@
+export const MASTER_STUDENT =[
+    {
+      id: "STU-001",
+      name: { en: "Abdullah Al Mansur", bn: "আব্দুল্লাহ আল মনসুর" },
+      class: "Class 6",
+      roll: "01",
+      status: "active",
+      guardian: "Md. Mansur",
+    },
+    {
+      id: "STU-002",
+      name: { en: "Zayd Ibn Harith", bn: "যায়দ ইবনে হারিস" },
+      class: "Class 7",
+      roll: "05",
+      status: "active",
+      guardian: "Harith Ahmed",
+    },
+    {
+      id: "STU-003",
+      name: { en: "Fatima Tuj Zohra", bn: "ফাতিমা তুজ জোহরা" },
+      class: "Class 6",
+      roll: "02",
+      status: "inactive",
+      guardian: "Abdul Karim",
+    },
+    {
+      id: "STU-004",
+      name: { en: "Umar Farooq", bn: "উমর ফারুক" },
+      class: "Class 8",
+      roll: "12",
+      status: "active",
+      guardian: "Rafiqul Islam",
+    },
+    {
+      id: "STU-005",
+      name: { en: "Aisha Rahman", bn: "আয়েশা রহমান" },
+      class: "Class 7",
+      roll: "03",
+      status: "active",
+      guardian: "Fazlur Rahman",
+    },
+  ]

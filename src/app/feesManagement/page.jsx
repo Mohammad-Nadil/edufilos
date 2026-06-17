@@ -15,6 +15,8 @@ import {
   FiFileText,
 } from "react-icons/fi";
 
+import { MASTER_FEES } from "@/constants/feesData";
+
 function FeesManagementContent() {
   const { lang } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,54 +48,10 @@ function FeesManagementContent() {
     [],
   );
 
-  const masterFees = useMemo(
-    () => [
-      {
-        id: "INV-2026-001",
-        name: { en: "Abdullah Al Mansur", bn: "আব্দুল্লাহ আল মনসুর" },
-        type: { en: "Tuition Fee", bn: "টিউশন ফি" },
-        amount: "৳১,৫০০",
-        date: "১০ জুন, ২০২৬",
-        status: "paid",
-      },
-      {
-        id: "INV-2026-002",
-        name: { en: "Zayd Ibn Harith", bn: "যায়দ ইবনে হারিস" },
-        type: { en: "Exam Fee", bn: "পরীক্ষার ফি" },
-        amount: "৳৫০০",
-        date: "১২ জুন, ২০২৬",
-        status: "unpaid",
-      },
-      {
-        id: "INV-2026-003",
-        name: { en: "Fatima Tuj Zohra", bn: "ফাতিমা তুজ জোহরা" },
-        type: { en: "Tuition Fee", bn: "টিউশন ফি" },
-        amount: "৳১,৫০০",
-        date: "০৮ জুন, ২০২৬",
-        status: "paid",
-      },
-      {
-        id: "INV-2026-004",
-        name: { en: "Umar Farooq", bn: "উমর ফারুক" },
-        type: { en: "Session Fee", bn: "সেশন ফি" },
-        amount: "৳৩,০০০",
-        date: "১৫ জুন, ২০২৬",
-        status: "unpaid",
-      },
-      {
-        id: "INV-2026-005",
-        name: { en: "Aisha Rahman", bn: "আয়েশা রহমান" },
-        type: { en: "Admission Fee", bn: "ভর্তি ফি" },
-        amount: "৳৫,০০০",
-        date: "০১ জুন, ۲۰২৬",
-        status: "paid",
-      },
-    ],
-    [],
-  );
+  
 
   const filteredFees = useMemo(() => {
-    return masterFees.filter((fee) => {
+    return MASTER_FEES.filter((fee) => {
       const matchesStatus =
         statusFilter === "all" || fee.status === statusFilter;
       const nameText = lang === "BN" ? fee.name.bn : fee.name.en;
@@ -102,7 +60,7 @@ function FeesManagementContent() {
         fee.id.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesStatus && matchesSearch;
     });
-  }, [searchQuery, statusFilter, masterFees, lang]);
+  }, [searchQuery, statusFilter, MASTER_FEES, lang]);
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-6 pb-24">

@@ -176,17 +176,16 @@ export default function TrustAndPayment() {
               {paymentLogos.map((logo, index) => (
                 <div
                   key={index}
-                  className="h-16 bg-card dark:bg-foreground/50  rounded  sm:rounded-xl border border-border-custom flex items-center justify-center p-1.5 hover:scale-105 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group"
+                  className="h-16 bg-card dark:bg-foreground/50 rounded sm:rounded-xl border border-border-custom flex items-center justify-center p-1.5 hover:scale-105 hover:border-primary/40 hover:shadow-md transition-all duration-300 relative group"
                   title={logo.name}
                 >
-                  <img
-                    src={logo.img?.src || logo.img}
+                  <Image
+                    src={logo.img}
                     alt={logo.name}
-                    className="h-full w-full object-contain filter contrast-[1.02]"
-                    onError={(e) => {
-                      e.target.style.display = "none";
-                      e.target.nextSibling.style.display = "block";
-                    }}
+                    fill
+                    sizes="(max-width: 640px) 20vw, (max-width: 1024px) 10vw, 100px"
+                    className="object-contain p-1.5 filter contrast-[1.02]"
+                    priority={index < 5}
                   />
                   <span className="hidden text-[10px] font-bold text-neutral-500 font-mono text-center truncate px-1">
                     {logo.name}
@@ -201,9 +200,12 @@ export default function TrustAndPayment() {
               </span>
               <div className=" p-2 rounded  sm:rounded-xl flex flex-col items-center justify-center shadow-sm  w-full max-w-45">
                 <img
-                  src={ssl.src}
+                  src={ssl.src || ssl}
                   alt="SSLCommerz"
-                  className="h-auto w-full max-w-35 object-contain"
+                  width={140}
+                  height={50}
+                  style={{ width: "100%", height: "auto" }}
+                  className="max-w-35 object-contain"
                 />
               </div>
             </div>

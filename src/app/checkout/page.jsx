@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
-import toast from "react-hot-toast"; // react-hot-toast ইমপোর্ট করা হলো
+import toast from "react-hot-toast";
 import {
   FiArrowLeft,
   FiCheckCircle,
@@ -17,10 +17,11 @@ import {
   HiOutlineEnvelope,
   HiOutlineUser,
 } from "react-icons/hi2";
-import { PLAN_DETAILS } from "@/temp";
+import { PLAN_DETAILS } from "@/helper/pricing/homePricing";
 import textureImg from "@/../public/texture.jpg";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
+import sslLogo from "@/../public/sslLogo.png";
 
 function CheckoutContent() {
   const { lang } = useLanguage();
@@ -54,7 +55,6 @@ function CheckoutContent() {
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
 
-    // ভ্যালিডেশন চেক এবং কাস্টম টোস্ট মেসেজ
     if (
       !formData.madrashaName ||
       !formData.contactPerson ||
@@ -78,7 +78,6 @@ function CheckoutContent() {
 
     setLoading(true);
 
-    // গেটওয়ে লোড হওয়ার সময় একটি ডাইনামিক লোডিং টোস্ট
     const loadingToast = toast.loading(
       lang === "BN"
         ? "SSLCommerz গেটওয়েতে সংযোগ করা হচ্ছে..."
@@ -245,7 +244,7 @@ function CheckoutContent() {
                     <span className="text-error">*</span>
                   </label>
                   <input
-                    type="type"
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -404,9 +403,12 @@ function CheckoutContent() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2 opacity-80">
                   <img
+                    src={sslLogo.src || sslLogo}
                     alt="SSLCommerz Secured Payment"
-                    className="h-6 object-contain filter contrast-125 brightness-95"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA63i_2tP-PrKbrt5v9FhEDLccoKTTfHuEuUYsvuklrsbxfthbMZXXFCui4MZ9ixZ9F3J5jqcevDSRRby-q-RRwp3bDSRQEPrVosI0oUSjL2Vm7ivF1Vb_DRJDtSCXLTTql90GgE9slp5ewHT5PMXEiVD9WbRhzAsSqCSSDPm5Moouw3THHSZx0rjeLdhHW1S_nL3AOEdiaJUbGuq_GOLm-VWmpNEjOp6oZyN8A29B65GhZ1DdVN-Pjo3qX_tKZKvrbd_9waJ0Yc3Vr"
+                    width={80}
+                    height={30}
+                    style={{ width: "80px", height: "auto" }}
+                    className="object-contain filter contrast-125 brightness-95"
                   />
                   <div className="hidden sm:block h-4 w-px bg-outline-variant"></div>
                   <div className="flex items-center gap-1 text-[11px] font-bold  uppercase tracking-widest">

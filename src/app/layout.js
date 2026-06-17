@@ -15,6 +15,7 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-roboto",
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
@@ -22,18 +23,21 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   variable: "--font-english",
+  display: "swap",
 });
 
 const notoBengali = Noto_Serif_Bengali({
   subsets: ["bengali"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-bangla",
+  display: "swap",
 });
 
 const amiri = Amiri({
   subsets: ["arabic"],
   weight: ["400", "700"],
   variable: "--font-arabic",
+  display: "swap",
 });
 
 export const metadata = {
@@ -48,11 +52,11 @@ export default function RootLayout({ children }) {
       lang="en"
       suppressHydrationWarning
       className={` ${playfair.variable} ${notoBengali.variable} ${amiri.variable} ${roboto.variable} h-full antialiased
-      dark `}
+       `}
     >
       <body
         suppressHydrationWarning
-        className=" flex flex-col relative overflow-x-clip!"
+        className=" flex flex-col relative overflow-x-clip! "
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <LanguageProvider>

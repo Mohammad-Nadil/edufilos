@@ -136,8 +136,9 @@ export default function Features() {
                     src={MosqueImg}
                     alt="Islamic Mosque Architecture View"
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                     priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 ) : (
                   <div className="w-full h-full bg-linear-to-b from-amber-950/20 via-background to-background flex items-center justify-center text-center p-4">
