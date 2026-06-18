@@ -22,12 +22,11 @@ export const LanguageProvider = ({ children }) => {
     localStorage.setItem("app_lang", nextLang);
   };
 
-  if (!mounted) {
-    return null; 
-  }
+  // mounted এর আগে default "BN" দাও — null return করো না
+  const safeLang = mounted ? lang : "BN";
 
   return (
-    <LanguageContext.Provider value={{ lang, toggleLanguage }}>
+    <LanguageContext.Provider value={{ lang: safeLang, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

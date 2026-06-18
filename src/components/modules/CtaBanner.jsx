@@ -44,7 +44,7 @@ export default function CtaBanner() {
           width={80}
           height={120}
           className="absolute right-16 -top-24 w-12 md:w-16 lg:w-20"
-          style={{ width: "100%", height: "auto" }}
+          style={{ height: "auto" }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-14">

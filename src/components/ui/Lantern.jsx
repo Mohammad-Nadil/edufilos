@@ -8,8 +8,8 @@ const Lantern = () => {
       <Image
         src={LanternImg}
         alt="lantern"
-        width={80}
-        height={120}
+        width={101}
+        height={550}
         className="w-20"
         style={{ width: "80px", height: "auto" }}
       />
