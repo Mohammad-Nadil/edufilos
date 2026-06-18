@@ -41,8 +41,8 @@ export default function CtaBanner() {
         <Image
           src={lanternImg}
           alt="lantern image"
-          width={80}
-          height={120}
+          width={101}
+          height={550}
           className="absolute right-16 -top-24 w-12 md:w-16 lg:w-20"
           style={{ width: "100%", height: "auto" }}
         />
