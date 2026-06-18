@@ -9,7 +9,7 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <div className="about-page-wrapper min-h-screen bg-background">
-      <main> {children}</main>
+      <main>{children}</main>
     </div>
   );
 }
