@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import BannerImg from "@/../public/banner.jpeg";
+import BannerImg from "@/../public/banner.png";
 import MacImg from "@/../public/mac.png";
 import PhoneImg from "@/../public/phone.png";
 import Placeholder from "@/../public/wall.jpg";
