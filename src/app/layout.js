@@ -65,12 +65,16 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="bn"
+      translate="no"
       suppressHydrationWarning
       className={`${playfair.variable} ${notoBengali.variable} ${amiri.variable} ${roboto.variable} h-full antialiased`}
     >
